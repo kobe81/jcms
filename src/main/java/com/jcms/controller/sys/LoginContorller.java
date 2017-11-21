@@ -22,7 +22,6 @@ public class LoginContorller extends BaseController{
 	}
 	
 	@ResponseBody
-	@RequestMapping("/login")
 	public void login() {
 		
 	}
