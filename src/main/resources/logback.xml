@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<contextName>JCMSLOG</contextName> 
+	<!-- 日志配置文件 -->
+	<property resource="logconfig.properties" />
+	<!-- 控制台日志 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder 默认配置为PatternLayoutEncoder -->
+		<encoder>
+			<pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!-- 日志文件 滚动-->
+	<appender name="logFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}</file>
+		<encoder>
+			<pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>jcms_log.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+ 	</appender>
+ 	<!-- SQL -->
+ 	<logger name="dao" level="DEBUG"/>
+	<!-- 优先级从高到低分别是 ERROR、WARN、INFO、DEBUG、TRACE -->
+	<root level="${log.level}">
+		<appender-ref ref="console" />
+		<appender-ref ref="logFile" />
+	</root>
+</configuration>
