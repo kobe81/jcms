@@ -1,17 +1,18 @@
 package com.jcms.mapper.sys;
 
-import com.jcms.pojo.sys.sysUserEntity;
 import java.util.List;
+
+import com.jcms.pojo.entity.sys.SysUserEntity;
 
 public interface SysUserEntityMapper {
 	
     int deleteByPrimaryKey(String id);
 
-    int insert(sysUserEntity entity);
+    int insert(SysUserEntity entity);
 
-    sysUserEntity selectByPrimaryKey(String id);
+    SysUserEntity selectByPrimaryKey(String id);
 
-    List<sysUserEntity> selectAll();
+    List<SysUserEntity> selectAll();
 
-    int updateByPrimaryKey(sysUserEntity entity);
+    int updateByPrimaryKey(SysUserEntity entity);
 }

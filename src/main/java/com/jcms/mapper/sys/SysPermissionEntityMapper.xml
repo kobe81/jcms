@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jcms.mapper.sys.SysPermissionEntityMapper">
+  <resultMap id="BaseResultMap" type="com.jcms.pojo.entity.sys.SysPermissionEntity">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="permission_name" jdbcType="VARCHAR" property="permissionName" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="menu_path" jdbcType="VARCHAR" property="menuPath" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="order" jdbcType="INTEGER" property="order" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_permission
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jcms.pojo.entity.sys.SysPermissionEntity">
+    insert into sys_permission (id, pid, permission_name, 
+      type, menu_path, status, 
+      order, icon)
+    values (#{id,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{permissionName,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{menuPath,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{order,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.sys.SysPermissionEntity">
+    update sys_permission
+    set pid = #{pid,jdbcType=VARCHAR},
+      permission_name = #{permissionName,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      menu_path = #{menuPath,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      order = #{order,jdbcType=INTEGER},
+      icon = #{icon,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, pid, permission_name, type, menu_path, status, order, icon
+    from sys_permission
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, pid, permission_name, type, menu_path, status, order, icon
+    from sys_permission
+  </select>
+  <resultMap id="BaseResultMap" type="com.jcms.pojo.entity.sys.SysPermissionEntity">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_permission
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jcms.pojo.entity.sys.SysPermissionEntity">
+    insert into sys_permission (id)
+    values (#{id,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id
+    from sys_permission
+  </select>
+</mapper>

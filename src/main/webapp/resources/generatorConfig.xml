@@ -15,12 +15,14 @@
             <property name="forceBigDecimals" value="false"/>    
         </javaTypeResolver>
         
-    <javaModelGenerator targetPackage="com.jcms.pojo.sys" targetProject="jcms/src/main/java">
+    <javaModelGenerator targetPackage="com.jcms.pojo.entity.sys" targetProject="jcms/src/main/java">
     	<property name="trimStrings" value="true"/>
     </javaModelGenerator>
     <sqlMapGenerator targetPackage="com.jcms.mapper.sys" targetProject="jcms/src/main/java" />
     
     <javaClientGenerator targetPackage="com.jcms.mapper.sys" targetProject="jcms/src/main/java" type="XMLMAPPER" />
-    <table tableName="sys_user" domainObjectName="sysUserEntity"></table>
+    <!-- <table tableName="sys_user" domainObjectName="sysUserEntity"></table> 
+    <table tableName="sys_role" domainObjectName="SysRoleEntity"></table>-->
+    <table tableName="sys_permission" domainObjectName="SysPermissionEntity"></table>
   </context>
 </generatorConfiguration>

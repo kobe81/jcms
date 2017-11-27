@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.jcms.mapper.sys.SysUserEntityMapper;
-import com.jcms.pojo.sys.sysUserEntity;
+import com.jcms.pojo.entity.sys.SysUserEntity;
 import com.jcms.service.ISysUserService;
 
 @Service
@@ -20,13 +20,13 @@ public class SysUserServiceImpl implements ISysUserService {
 	private SysUserEntityMapper sysmapper;
 	
 	@Override
-	public Integer saveSysUser(sysUserEntity entity) {
+	public Integer saveSysUser(SysUserEntity entity) {
 		log.info("进入系统用户保存");
 		return sysmapper.insert(entity);
 	}
 
 	@Override
-	public List<sysUserEntity> listSysUser() {
+	public List<SysUserEntity> listSysUser() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -38,7 +38,7 @@ public class SysUserServiceImpl implements ISysUserService {
 	}
 
 	@Override
-	public Integer updataSysUser(sysUserEntity entity) {
+	public Integer updataSysUser(SysUserEntity entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}

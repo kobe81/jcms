@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jcms.controller.common.BaseController;
-import com.jcms.pojo.sys.sysUserEntity;
+import com.jcms.pojo.entity.sys.SysUserEntity;
 import com.jcms.service.ISysUserService;
 
 /**
@@ -28,7 +28,7 @@ public class SysUserController extends BaseController{
 	 @RequestMapping("save")
 	 public String saveSysUser(){
 		 log.info("进入用户保存");
-		 sysUserEntity user=new sysUserEntity();
+		 SysUserEntity user=new SysUserEntity();
 		 try {
 			 user.setId("123");
 			 user.setNickname("测试");

@@ -18,12 +18,11 @@
         <value>  
         <!-- anon设置匿名访问 -->
               /index.jsp=anon  
-              /jsp/success.jsp=anon  
-              /jsp/fail.jsp=anon  
-              /jsp/user.jsp = roles[user]  
-              /jsp/admin.jsp = roles[admin]
+              /system/login.jsp=anon  
+              /views/*=anon
+              /common/*=anon  
               <!-- /** = authc 所有url都必须认证通过才可以访问 -->
-              /sys/* = authc
+              /system/* = authc
               /logout = logout  
         </value>  
         </property>  
