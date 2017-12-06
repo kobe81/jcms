@@ -3,7 +3,7 @@ package com.jcms.mapper.sys;
 import com.jcms.pojo.entity.sys.SysRoleEntity;
 import java.util.List;
 
-public interface SysRoleEntityMapper {
+public interface SysRoleMapper {
     int deleteByPrimaryKey(String id);
 
     int insert(SysRoleEntity record);

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.jcms.pojo.entity.sys.SysUserEntity;
 
-public interface SysUserEntityMapper {
+public interface SysUserMapper {
 	
     int deleteByPrimaryKey(String id);
 

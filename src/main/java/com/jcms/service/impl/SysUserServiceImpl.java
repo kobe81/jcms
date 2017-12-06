@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.jcms.mapper.sys.SysUserEntityMapper;
+import com.jcms.mapper.sys.SysUserMapper;
 import com.jcms.pojo.entity.sys.SysUserEntity;
 import com.jcms.service.ISysUserService;
 
@@ -17,7 +17,7 @@ public class SysUserServiceImpl implements ISysUserService {
 	private static Logger log = LoggerFactory.getLogger(SysUserServiceImpl.class);
 	
 	@Resource
-	private SysUserEntityMapper sysmapper;
+	private SysUserMapper sysmapper;
 	
 	@Override
 	public Integer saveSysUser(SysUserEntity entity) {

@@ -18,12 +18,13 @@
         <value>  
         <!-- anon设置匿名访问 -->
               /index.jsp=anon  
-              /system/login.jsp=anon  
+              /system/login.jsp=anon
+              /system/logout = logout
               /views/*=anon
               /common/*=anon  
               <!-- /** = authc 所有url都必须认证通过才可以访问 -->
               /system/* = authc
-              /logout = logout  
+              
         </value>  
         </property>  
          </bean>
@@ -35,11 +36,8 @@
         </bean>
         
         <!-- 配置进行授权和认证的 Realm -->  
-        <bean id="myRealm" class="com.jcms.system.ShiroRealm">  
-             <property name="userService" ref="userService" />  
-        </bean>
+        <bean id="myRealm" class="com.jcms.system.ShiroRealm"></bean>
         
-        <bean id="userService" class="com.jcms.service.impl.SysUserServiceImpl" />
         
         <!-- 配置 Shiro 的 SecurityManager Bean. -->  
         <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
