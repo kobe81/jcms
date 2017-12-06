@@ -13,4 +13,6 @@ public interface ISysUserService {
 	Integer deleteSysUser(List<String> ids) throws RuntimeException;
 
 	Integer updataSysUser(SysUserEntity entity) throws RuntimeException;
+	
+	SysUserEntity getForUserName(String userName);
 }

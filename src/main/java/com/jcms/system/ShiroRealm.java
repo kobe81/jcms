@@ -8,6 +8,8 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.jcms.service.ISysUserService;
 
@@ -20,7 +22,7 @@ import com.jcms.service.ISysUserService;
 *    
 */  
 public class ShiroRealm extends AuthorizingRealm{
-	
+	private static final Logger logger = LoggerFactory.getLogger(ShiroRealm.class);
 	@Resource
 	private ISysUserService sysUserService;
 
@@ -29,7 +31,7 @@ public class ShiroRealm extends AuthorizingRealm{
      */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection collection) {
-		// TODO Auto-generated method stub
+		logger.info("===开始用户授权认证===");
 		return null;
 	}
 
@@ -38,7 +40,9 @@ public class ShiroRealm extends AuthorizingRealm{
      */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		// TODO Auto-generated method stub
+		logger.info("===开始用户登陆认证===");
+		String userName=String.valueOf(token.getPrincipal());
+		sysUserService.getForUserName(userName);
 		return null;
 	}
 

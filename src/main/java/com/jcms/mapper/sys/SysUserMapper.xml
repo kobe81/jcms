@@ -46,4 +46,8 @@
     select id, username, nickname, password, telephone, email,type,status,remark
     from sys_user
   </select>
+  <select id="getForUserName" resultMap="BaseResultMap">
+  	select id, username, nickname, password, telephone, email,type,status,remark
+    from sys_user where username = #{username,jdbcType=VARCHAR}
+  </select>
 </mapper>

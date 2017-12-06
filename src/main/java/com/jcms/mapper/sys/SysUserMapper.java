@@ -2,6 +2,8 @@ package com.jcms.mapper.sys;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.jcms.pojo.entity.sys.SysUserEntity;
 
 public interface SysUserMapper {
@@ -15,4 +17,6 @@ public interface SysUserMapper {
     List<SysUserEntity> selectAll();
 
     int updateByPrimaryKey(SysUserEntity entity);
+    
+    SysUserEntity getForUserName(@Param("userName") String userName);
 }

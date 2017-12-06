@@ -42,6 +42,11 @@ public class SysUserServiceImpl implements ISysUserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public SysUserEntity getForUserName(String userName) {
+		return sysmapper.getForUserName(userName);
+	}
 	
 	
 }
