@@ -15,7 +15,9 @@ public class SysUserEntity {
 	private String email;
 	 /** 用户类型 */ 
 	private String type;
-	 /** 状态 */ 
+	 /** 状态 
+	  * 0:删除  1：正常  2：锁定  3：未启用
+	  * */ 
 	private String status;
 	/** 备注 */ 
 	private String remark;

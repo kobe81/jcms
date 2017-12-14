@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="/amazeui/assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="/resources/amazeui/assets/css/amazeui.min.css"/>
 <title>登录页面</title>
 </head>
 <body>
@@ -23,11 +23,12 @@
       </label>
       <br />
       <div class="am-cf">
-        <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-        <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+        <input type="submit" onclick="login.dologin()" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
+        <input type="submit" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
       </div>
     </form>
 </div>
-</div>	
+</div>
+<script type="text/javascript" src="/resources/statics/js/sys/login.js"></script>
 </body>
 </html>

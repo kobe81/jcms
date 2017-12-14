@@ -48,6 +48,6 @@
   </select>
   <select id="getForUserName" resultMap="BaseResultMap">
   	select id, username, nickname, password, telephone, email,type,status,remark
-    from sys_user where username = #{username,jdbcType=VARCHAR}
+    from sys_user where username = #{username,jdbcType=VARCHAR} and status ='1'
   </select>
 </mapper>

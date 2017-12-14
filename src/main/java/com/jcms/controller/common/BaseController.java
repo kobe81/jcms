@@ -4,12 +4,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 基类封装统一定义的结构
+ * 
  * @author ZYJ
  *
  */
 public class BaseController {
-	
-	ModelAndView returnMsg(){
-		return new ModelAndView();
+
+	/**
+	 * @Title: returnMsg 
+	 * @Description: 定义统一的返回结果结构
+	 *  @param falg 
+	 *  @param msg 
+	 *  @param data 
+	 *  @return 参数 
+	 *  @return ModelAndView 返回类型 
+	 *  @throws
+	 */
+	protected ModelAndView returnMsg(Boolean success, String msg, Object data) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("success", success);
+		mv.addObject("msg", msg);
+		mv.addObject("data", data);
+		return mv;
 	}
 }

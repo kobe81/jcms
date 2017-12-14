@@ -8,9 +8,9 @@
         	<!-- 装配 securityManager -->  
         <property name="securityManager" ref="securityManager"/> 
         <!-- 配置登陆页面 -->  
-        <property name="loginUrl" value="/index.jsp"/>
+        <property name="loginUrl" value="/system/login.jsp"/>
         <!-- 登陆成功后的一面 -->  
-        <property name="successUrl" value="/jsp/success.jsp"/>
+        <property name="successUrl" value="/system/main.jsp"/>
         <!-- 用户访问未对其授权的资源时，所显示的连接 -->
         <property name="unauthorizedUrl" value="/jsp/unauthorized.jsp"/>
         <!-- 具体配置需要拦截哪些 URL, 以及访问对应的 URL 时使用 Shiro 的什么 Filter 进行拦截.  --> 
@@ -36,13 +36,13 @@
         </bean>
         
         <!-- 配置进行授权和认证的 Realm -->  
-        <bean id="myRealm" class="com.jcms.system.ShiroRealm"></bean>
+        <bean id="shiroRealm" class="com.jcms.system.ShiroRealm"></bean>
         
         
         <!-- 配置 Shiro 的 SecurityManager Bean. -->  
         <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
             <property name="cacheManager" ref="cacheManager"/>   
-             <property name="realm" ref="myRealm"/>   
+             <property name="realm" ref="shiroRealm"/>   
              <property name="sessionMode" value="native">  
              </property>  
        </bean>
