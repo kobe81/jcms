@@ -9,6 +9,7 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -40,7 +41,8 @@ public class ShiroRealm extends AuthorizingRealm{
 		logger.info("===开始用户授权认证===");
 		String userName = (String) getAvailablePrincipal(collection);
 		//获取登录用户的权限
-		return null;
+		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		return info;
 	}
 
 	/**

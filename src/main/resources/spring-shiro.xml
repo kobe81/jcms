@@ -43,10 +43,25 @@
         <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
             <property name="cacheManager" ref="cacheManager"/>   
              <property name="realm" ref="shiroRealm"/>   
-             <property name="sessionMode" value="native">  
-             </property>  
+             <!--<property name="sessionManager" ref="sessionManager">
+             </property>  -->
        </bean>
-       
+    <!-- 自定义会话管理配置 -->
+    <!--<bean id="sessionManager" class="com.yonyou.hotusm.common.security.session.SessionManager">
+        <property name="sessionDAO" ref="sessionDAO"/>
+
+        &lt;!&ndash; 会话超时时间，单位：毫秒  &ndash;&gt;
+        <property name="globalSessionTimeout" value="3000"/>
+
+        &lt;!&ndash; 定时清理失效会话, 清理用户直接关闭浏览器造成的孤立会话   &ndash;&gt;
+        <property name="sessionValidationInterval" value="3000"/>
+        &lt;!&ndash;          <property name="sessionValidationSchedulerEnabled" value="false"/> &ndash;&gt;
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+        <property name="sessionIdCookieEnabled" value="true"/>
+    </bean>-->
+
        <!-- 配置 Bean 后置处理器: 会自动的调用和 Spring 整合后各个组件的生命周期方法. -->  
         <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 </beans>
