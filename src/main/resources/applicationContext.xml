@@ -44,17 +44,17 @@
     <!-- SessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
         <property name="dataSource" ref="dataSource" />  
-        <!-- 自动扫描mapping.xml文件 -->  
-        <property name="configLocation" value="classpath:/mybatis.xml"></property>  
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="configLocation" value="classpath:/mybatis.xml"></property>
     </bean>
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
     <!-- mapper接口 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.jcms.mapper" />  
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
      <!-- 事物扫描层 -->
     <aop:config>

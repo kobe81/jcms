@@ -36,7 +36,7 @@
         </bean>
         
         <!-- 配置进行授权和认证的 Realm -->  
-        <bean id="shiroRealm" class="com.jcms.system.ShiroRealm"></bean>
+        <bean id="shiroRealm" class="com.jcms.system.ShiroRealm"/>
         
         
         <!-- 配置 Shiro 的 SecurityManager Bean. -->  
