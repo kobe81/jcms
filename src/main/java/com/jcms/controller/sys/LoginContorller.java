@@ -2,6 +2,9 @@ package com.jcms.controller.sys;
 
 import java.time.LocalDateTime;
 
+import com.jcms.pojo.dto.BaseResultsDto;
+import com.jcms.pojo.entity.sys.SysUserEntity;
+import com.jcms.service.ISysUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -9,6 +12,8 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.session.HttpServletSession;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jcms.controller.common.BaseController;
 import com.jcms.pojo.dto.SysUserDto;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**  
 * @ClassName: LoginContorller  
@@ -27,6 +35,9 @@ import com.jcms.pojo.dto.SysUserDto;
 @RestController
 @RequestMapping("/sys")
 public class LoginContorller extends BaseController{
+
+    @Resource
+    private ISysUserService userServiceImpl;
 
 	/**  
 	* @Title: jump  
@@ -42,8 +53,8 @@ public class LoginContorller extends BaseController{
 	
 	/**  
 	* @Title: 登录验证
-	* @Description: TODO(这里用一句话描述这个方法的作用)  
-	* @param     参数  
+	* @Description:
+	* @param  userDto
 	* @return void    返回类型  
 	* @throws  
 	*/  
@@ -67,11 +78,42 @@ public class LoginContorller extends BaseController{
 			userDto.setLoginTime(LocalDateTime.now());
 			return returnMsg(true, "登录成功", userDto);
 	}
+
+	/**
+	 * 登录
+	 * @param userDto
+	 * @return
+	 */
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public BaseResultsDto login(SysUserDto userDto, HttpServletRequest request) {
+        String username=userDto.getUsername();
+        String password=userDto.getPassword();
+        SysUserEntity user=userServiceImpl.getForUserName(username);
+        String encodeStr= DigestUtils.md5DigestAsHex((username+password).getBytes());
+        if (user!=null&&user.getPassword().equals(encodeStr)){
+            //用户验证登录
+            request.getSession().setAttribute("user",user);
+            return new BaseResultsDto(true,"登录成功",null);
+        }else{
+            return new BaseResultsDto(false,"用户名或者密码错误，请检查",null);
+        }
+	}
+
+	/**
+	 * 登录
+	 * @return
+	 */
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	public BaseResultsDto loginout(HttpServletRequest request) {
+		//用户验证登录
+        request.getSession().removeAttribute("user");
+		return new BaseResultsDto(true,"退出成功",null);
+	}
 	
 	/**  
 	* @Title: doLogout
 	* @Description: 退书登录
-	* @param     参数  
+	* @param
 	* @return void    返回类型  
 	* @throws  
 	*/  

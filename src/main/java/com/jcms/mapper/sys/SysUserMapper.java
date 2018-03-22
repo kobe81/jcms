@@ -18,5 +18,5 @@ public interface SysUserMapper {
 
     int updateByPrimaryKey(SysUserEntity entity);
     
-    SysUserEntity getForUserName(@Param("userName") String userName);
+    SysUserEntity getForUserName(@Param("username") String username);
 }

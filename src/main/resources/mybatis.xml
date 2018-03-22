@@ -2,14 +2,11 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<settings>
-		<!-- <setting name="logImpl" value="LOG4J2" /> -->
+	<!-- <settings>
+		<setting name="logImpl" value="LOG4J2" />
 		<setting name="logPrefix" value="dao."/>
 		<setting name="callSettersOnNulls" value="true"/>
-	</settings>
-	<typeAliases>
-		<package name="com.jcms.pojo" />
-	</typeAliases>
+	</settings>-->
 	<!-- <plugins>
        <plugin interceptor="com.cpt.util.page.PageUtil"></plugin>
        <plugin interceptor="com.cpt.common.mybatis.UpdateInterceptor"></plugin>

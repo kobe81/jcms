@@ -15,14 +15,21 @@
             <property name="forceBigDecimals" value="false"/>    
         </javaTypeResolver>
         
-    <javaModelGenerator targetPackage="com.jcms.pojo.entity.sys" targetProject="src/main/java">
+    <javaModelGenerator targetPackage="com.jcms.pojo.entity.scenic" targetProject="src/main/java">
     	<property name="trimStrings" value="true"/>
     </javaModelGenerator>
-    <sqlMapGenerator targetPackage="com.jcms.mapper.sys" targetProject="src/main/java" />
+    <sqlMapGenerator targetPackage="com.jcms.mapper.scenic" targetProject="src/main/java" />
     
-    <javaClientGenerator targetPackage="com.jcms.mapper.sys" targetProject="src/main/java" type="XMLMAPPER" />
+    <javaClientGenerator targetPackage="com.jcms.mapper.scenic" targetProject="src/main/java" type="XMLMAPPER" />
     <!-- <table tableName="sys_user" domainObjectName="sysUserEntity"></table> 
-    <table tableName="sys_role" domainObjectName="SysRoleEntity"></table>-->
+    <table tableName="sys_role" domainObjectName="SysRoleEntity"></table>
     <table tableName="sys_permission" domainObjectName="SysPermissionEntity"></table>
+      <table tableName="sys_file" domainObjectName="SysFileEntity"></table>
+      <table tableName="scenic_info" domainObjectName="ScenicInfoEntity"></table>
+      <table tableName="discuss" domainObjectName="DiscussEntity"></table>-->
+      <table tableName="user_room" domainObjectName="UserRoomEntity"></table>
+      <table tableName="scenic_discuss" domainObjectName="ScenicDiscussEntity"></table>
+      <table tableName="rooms" domainObjectName="RoomsEntity"></table>
+      <table tableName="hotel" domainObjectName="HotelEntity"></table>
   </context>
 </generatorConfiguration>

@@ -2,7 +2,7 @@ package com.jcms.pojo.entity.sys;
 
 public class SysUserEntity {
 	 /** 主键 */ 
-	private String id;
+	private Long id;
 	 /** 账号 */ 
 	private String username;
 	 /** 昵称 */ 
@@ -22,12 +22,12 @@ public class SysUserEntity {
 	/** 备注 */ 
 	private String remark;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id == null ? null : id.trim();
+	public void setId(Long id) {
+		this.id = id == null ? null : id;
 	}
 
 	public String getUsername() {

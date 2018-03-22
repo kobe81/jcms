@@ -69,7 +69,6 @@
 			<tx:method name="reset*" propagation="REQUIRED" rollback-for="Exception" />
 			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception" />
 			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
-			<tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception" />
 			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception" />
 			<tx:method name="import*" propagation="REQUIRED" rollback-for="Exception" />
 			<tx:method name="*" read-only="true" />

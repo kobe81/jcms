@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jcms.mapper.scenic.ScenicDiscussEntityMapper">
+  <resultMap id="BaseResultMap" type="com.jcms.pojo.entity.scenic.ScenicDiscussEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="scenice_id" jdbcType="BIGINT" property="sceniceId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from scenic_discuss
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jcms.pojo.entity.scenic.ScenicDiscussEntity">
+    insert into scenic_discuss (id, user_id, scenice_id, 
+      content, creat_time)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{sceniceId,jdbcType=BIGINT}, 
+      #{content,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.scenic.ScenicDiscussEntity">
+    update scenic_discuss
+    set user_id = #{userId,jdbcType=BIGINT},
+      scenice_id = #{sceniceId,jdbcType=BIGINT},
+      content = #{content,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, user_id, scenice_id, content, creat_time
+    from scenic_discuss
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, scenice_id, content, creat_time
+    from scenic_discuss
+  </select>
+</mapper>

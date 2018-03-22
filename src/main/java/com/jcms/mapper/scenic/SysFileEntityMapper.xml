@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jcms.mapper.scenic.SysFileEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.jcms.pojo.entity.sys.SysFileEntity" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
+    <result column="JOIN_ID" property="joinId" jdbcType="BIGINT" />
+    <result column="CREAT_TIME" property="creatTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_file
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jcms.pojo.entity.sys.SysFileEntity" >
+    insert into sys_file (ID, PIC_URL, JOIN_ID, 
+      CREAT_TIME)
+    values (#{id,jdbcType=BIGINT}, #{picUrl,jdbcType=VARCHAR}, #{joinId,jdbcType=BIGINT}, 
+      #{creatTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.sys.SysFileEntity" >
+    update sys_file
+    set PIC_URL = #{picUrl,jdbcType=VARCHAR},
+      JOIN_ID = #{joinId,jdbcType=BIGINT},
+      CREAT_TIME = #{creatTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select ID, PIC_URL, JOIN_ID, CREAT_TIME
+    from sys_file
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select ID, PIC_URL, JOIN_ID, CREAT_TIME
+    from sys_file
+  </select>
+</mapper>

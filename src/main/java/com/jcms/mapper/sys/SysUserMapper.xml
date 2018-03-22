@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jcms.mapper.sys.SysUserMapper">
   <resultMap id="BaseResultMap" type="com.jcms.pojo.entity.sys.SysUserEntity">
-    <id column="id" jdbcType="VARCHAR" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -14,13 +14,13 @@
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from sys_user
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.jcms.pojo.entity.sys.SysUserEntity">
-    insert into sys_user (id, username, nickname, 
+    insert into sys_user (username, nickname,
       password, telephone, email,type,status,remark
       )
-    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+    values (#{username,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},
       #{password,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
       #{type,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
@@ -35,12 +35,12 @@
       type = #{type,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select id, username, nickname, password, telephone, email,type,status,remark
     from sys_user
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, username, nickname, password, telephone, email,type,status,remark

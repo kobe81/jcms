@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jcms.mapper.hotel.RoomsEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.jcms.pojo.entity.hotel.RoomsEntity" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="hotel_id" property="hotelId" jdbcType="BIGINT" />
+    <result column="room_type" property="roomType" jdbcType="VARCHAR" />
+    <result column="room_price" property="roomPrice" jdbcType="DECIMAL" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="beds" property="beds" jdbcType="INTEGER" />
+    <result column="numbers" property="numbers" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from rooms
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jcms.pojo.entity.hotel.RoomsEntity" >
+    insert into rooms (id, hotel_id, room_type, 
+      room_price, remark, beds, 
+      numbers)
+    values (#{id,jdbcType=BIGINT}, #{hotelId,jdbcType=BIGINT}, #{roomType,jdbcType=VARCHAR}, 
+      #{roomPrice,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{beds,jdbcType=INTEGER}, 
+      #{numbers,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.hotel.RoomsEntity" >
+    update rooms
+    set hotel_id = #{hotelId,jdbcType=BIGINT},
+      room_type = #{roomType,jdbcType=VARCHAR},
+      room_price = #{roomPrice,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      beds = #{beds,jdbcType=INTEGER},
+      numbers = #{numbers,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, hotel_id, room_type, room_price, remark, beds, numbers
+    from rooms
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, hotel_id, room_type, room_price, remark, beds, numbers
+    from rooms
+  </select>
+  <select id="getRoomForHotel" resultMap="BaseResultMap" parameterType="java.lang.Long">
+ select id, hotel_id, room_type, room_price, remark, beds, numbers
+    from rooms where hotel_id = #{hotelId}
+  </select>
+  <insert id="saveReserve" parameterType="com.jcms.pojo.dto.RoomsDto">
+    INSERT INTO user_room (user_id,hotel_id,room_id,numbers,stay_in_time,days)
+    VALUES (#{userId},#{hotelId},#{roomId},#{numbers},#{inTime},#{days})
+  </insert>
+  <update id="updateRooms">
+    update rooms
+    set
+    numbers = #{numbers,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

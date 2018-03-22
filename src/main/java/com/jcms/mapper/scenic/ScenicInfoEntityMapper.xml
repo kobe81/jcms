@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jcms.mapper.scenic.ScenicInfoEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.jcms.pojo.entity.scenic.ScenicInfoEntity" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="AUTHOR" property="author" jdbcType="VARCHAR" />
+    <result column="SOURCE" property="source" jdbcType="VARCHAR" />
+    <result column="CREAT_TIME" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from scenic_info
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jcms.pojo.entity.scenic.ScenicInfoEntity" >
+    insert into scenic_info (ID, TITLE, CONTENT, 
+      AUTHOR, SOURCE, CREAT_TIME, remark
+      TYPE)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.scenic.ScenicInfoEntity" >
+    update scenic_info
+    set TITLE = #{title,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      AUTHOR = #{author,jdbcType=VARCHAR},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      CREAT_TIME = #{creatTime,jdbcType=TIMESTAMP},
+      TYPE = #{type,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultType="com.jcms.pojo.dto.ScenicInfoDto" parameterType="java.lang.Long" >
+    select info.ID, TITLE, CONTENT, AUTHOR, SOURCE, info.CREAT_TIME creatTime,PIC_URL filepath,info.TYPE,info.remark
+    from scenic_info info LEFT JOIN sys_file f ON info.ID=JOIN_ID AND f.type='scenic'
+    where info.ID = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultType="com.jcms.pojo.dto.ScenicInfoDto" >
+    select info.ID, TITLE, CONTENT, AUTHOR, SOURCE, info.CREAT_TIME creatTime,PIC_URL filepath,info.TYPE,info.remark
+    from scenic_info info LEFT JOIN sys_file f ON info.ID=JOIN_ID AND f.type='scenic' ORDER BY info.CREAT_TIME DESC
+  </select>
+</mapper>

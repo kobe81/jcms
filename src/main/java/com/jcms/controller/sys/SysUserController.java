@@ -2,9 +2,12 @@ package com.jcms.controller.sys;
 
 import javax.annotation.Resource;
 
+import com.jcms.pojo.dto.BaseResultsDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jcms.controller.common.BaseController;
@@ -25,21 +28,22 @@ public class SysUserController extends BaseController{
 	private ISysUserService userServiceImpl;
 	
 	
-	 @RequestMapping("save")
-	 public String saveSysUser(){
+	 @RequestMapping(value = "save",method = RequestMethod.POST)
+	 public BaseResultsDto saveSysUser(SysUserEntity user){
 		 log.info("进入用户保存");
-		 SysUserEntity user=new SysUserEntity();
 		 try {
-			 user.setId("123");
-			 user.setNickname("测试");
-			 user.setPassword("123456");
-			 user.setUsername("11");
+             String psd=user.getPassword();
+             String username=user.getUsername();
+             //MD5加密
+             String encodeStr= DigestUtils.md5DigestAsHex((username+psd).getBytes());
+             user.setPassword(encodeStr);
+			 user.setStatus("1");
 			userServiceImpl.saveSysUser(user);
-			return "成功了！！！";
+			return new BaseResultsDto(true,"查询成功",null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error(e.getMessage());
-			return e.getMessage();
+			 return new BaseResultsDto(false,"查询成功",e.getMessage());
 		}
 	 }
 }
