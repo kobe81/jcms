@@ -20,9 +20,13 @@
 					</list>
 				</property>
 				<!--采取规则序列化规则-->
-				<!--<property name="features">
-					<list></list>
-				</property>-->
+				<property name="features">
+					<list>
+						<value>WriteMapNullValue</value>
+						<value>WriteNullListAsEmpty</value>
+						<value>WriteMapNullValue</value>
+					</list>
+				</property>
 			</bean>
 		 </mvc:message-converters>
 		 

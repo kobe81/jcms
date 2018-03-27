@@ -43,9 +43,9 @@
                     <li><a href="${ctx}/" class="active">主页</a></li>
                     <li><a href="${ctx}/scenic/jump/scenic_show">玩转婺源</a></li>
                     <li><a href="${ctx}/hotel/jump/hotel">酒店预订</a></li>
-                    <li><a href="${ctx}/scenic/jump/scenic_show">线路规划</a></li>
+                    <li><a href="${ctx}/scenic/jump/path_planning">线路规划</a></li>
                     <li><a href="${ctx}/scenic/jump/scenic_discuss">景点点评</a></li>
-                    <li><a href="">关于婺源</a></li>
+                    <%--<li><a href="">关于婺源</a></li>--%>
                 </ul>
                 <!--script-nav-->
                 <script>

@@ -12,11 +12,14 @@
     delete from scenic_discuss
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.jcms.pojo.entity.scenic.ScenicDiscussEntity">
-    insert into scenic_discuss (id, user_id, scenice_id, 
+  <insert id="insert" parameterType="com.jcms.pojo.entity.scenic.ScenicDiscussEntity" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    insert into scenic_discuss (user_id, scenice_id,
       content, creat_time)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{sceniceId,jdbcType=BIGINT}, 
+    values (#{userId,jdbcType=BIGINT}, #{sceniceId,jdbcType=BIGINT},
       #{content,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="saveFile" parameterType="com.jcms.pojo.entity.sys.SysFileEntity">
+    insert into sys_file (PIC_URL,JOIN_ID,CREAT_TIME,TYPE) VALUES (#{picUrl},#{joinId},#{creatTime},'discuss')
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.scenic.ScenicDiscussEntity">
     update scenic_discuss
@@ -34,5 +37,17 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select id, user_id, scenice_id, content, creat_time
     from scenic_discuss
+  </select>
+    <select id="selectDiscuss" resultType="com.jcms.pojo.dto.ScenicDiscussDto">
+    select sd.id,username userName,scenice_id sceniceId, content, creat_time creatTime
+    from scenic_discuss sd
+    LEFT JOIN sys_user u ON user_id=u.id
+    WHERE  scenice_id=#{scenicId}
+    ORDER BY creat_time
+    </select>
+  <select id="getFile" resultType="java.lang.String">
+     select pic_url path from sys_file
+     WHERE JOIN_ID=#{joinId} AND type='discuss'
+     ORDER BY  creat_time
   </select>
 </mapper>

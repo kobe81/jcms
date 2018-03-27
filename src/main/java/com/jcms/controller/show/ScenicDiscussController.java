@@ -1,11 +1,18 @@
 package com.jcms.controller.show;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.jcms.controller.common.BaseController;
 import com.jcms.pojo.dto.BaseResultsDto;
+import com.jcms.pojo.dto.ScenicDiscussDto;
 import com.jcms.pojo.dto.ScenicInfoDto;
+import com.jcms.pojo.entity.scenic.ScenicDiscussEntity;
+import com.jcms.pojo.entity.sys.SysUserEntity;
+import com.jcms.service.ScenicDiscussService;
 import com.jcms.service.ScenicInfoService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,7 +22,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: ZYJ
@@ -29,7 +39,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/discuss")
 public class ScenicDiscussController extends BaseController {
+    @Resource
+    private ScenicInfoService scenicInfoService;
 
+    @Resource
+    private ScenicDiscussService discussService;
 
     /**
      * 获取评论
@@ -37,10 +51,16 @@ public class ScenicDiscussController extends BaseController {
      * @return
      */
     @RequestMapping("/getDiscuss/{id}")
-    public BaseResultsDto getDiscuss(Long id){
-
-
-        return new BaseResultsDto(true,"",null);
+    public BaseResultsDto getDiscuss(@PathVariable Long id){
+        Map<String,Object> data=new HashMap<>();
+        //获取景点详情
+        ScenicInfoDto info=scenicInfoService.getScenicInfo(id);
+        data.put("scenic",info);
+        //获取点评列表
+        List<ScenicDiscussDto> discuss=discussService.getDiscuss(id);
+        data.put("discuss",discuss);
+//        return new BaseResultsDto(true,"获取评论成功", JSON.toJSONString(data, SerializerFeature.WriteMapNullValue));
+        return new BaseResultsDto(true,"获取评论成功", data);
     }
 
     /**
@@ -75,10 +95,21 @@ public class ScenicDiscussController extends BaseController {
      * @return
      * @throws IOException
      */
-    @RequestMapping("/send")
-    public BaseResultsDto send() throws IOException {
+    @RequestMapping(value = "/send",method = RequestMethod.POST)
+    public BaseResultsDto send(ScenicDiscussEntity discussEntity,String files,HttpServletRequest request) {
+        try {
+            //获取当前登录人员
+            SysUserEntity user= (SysUserEntity) request.getSession().getAttribute("user");
+            String realPath=request.getSession().getServletContext().getRealPath("/");
+            discussEntity.setUserId(user.getId());
+            discussEntity.setCreatTime(new Date());
+            discussService.saveDiscuss(discussEntity,files,realPath);
+            return new BaseResultsDto(true,"评论成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new BaseResultsDto(false,"评论失败");
+        }
 
-            return new BaseResultsDto(false,"上文件失败");
 
     }
 

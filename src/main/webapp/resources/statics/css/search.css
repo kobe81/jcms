@@ -1,0 +1,489 @@
+#nav {
+    position: absolute
+}
+
+#indexbox {
+    position: relative;
+    box-sizing: border-box
+}
+
+#planForm {
+    position: relative;
+    padding: 14px;
+    background: #3d93fd;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px
+}
+
+#amap_panel_model {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: -20px
+}
+
+.line-search {
+    position: relative;
+    margin-top: 15px
+}
+
+.line-search-left,.line-search-right {
+    position: absolute
+}
+
+.icon_exchange {
+    top: 50%;
+    left: 0;
+    width: 18px;
+    height: 28px;
+    margin-top: -14px;
+    cursor: pointer
+}
+
+.icon_exchange i {
+    color: #fff;
+    position: absolute;
+    font-size: 18px
+}
+
+.icon_exchange:hover i {
+    color: #c9e1fe
+}
+
+.icon_add {
+    display: block;
+    width: 20px;
+    height: 20px;
+    right: 1px;
+    bottom: 50%;
+    margin-bottom: -10px;
+    background: url("/jcms/resources/statics/img/icon_add.png") 50% no-repeat;
+    background-size: 20px 20px;
+    cursor: pointer
+}
+
+.icon_add.active {
+    bottom: 6px;
+    margin-bottom: 0
+}
+
+.icon_add:hover {
+    background-image: url("/assets/img/icon/icon_add_hover.png")
+}
+
+.line-search-left a,.line-search-point a,.line-search-point em,.line-search-right a {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: 50%
+}
+
+
+
+.line-search-form {
+    margin: 0 30px
+}
+
+.line-search-form p.line_serch_ipt {
+    position: relative;
+    height: 34px;
+    line-height: 34px;
+    width: 230px;
+    font-size: 14px;
+    color: #acd7ff;
+    background-color: #3587eb;
+    border-radius: 2px;
+    margin-bottom: 10px
+}
+
+.line-search-form p.line_serch_ipt.none {
+    display: none
+}
+
+.line-search-form p.line_serch_ipt.active {
+    color: #e1f1ff
+}
+
+.line-search-form p.line-search-end {
+    margin-bottom: 0
+}
+
+.line-search-form p label {
+    margin-left: 10px
+}
+
+.line-search-form p input {
+    width: 78%;
+    height: 34px;
+    line-height: 32px;
+    border: none;
+    background: transparent;
+    text-indent: 5px;
+    color: #acd7ff;
+    padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.line-search-form p.active input {
+    color: #e1f1ff
+}
+
+.line-search-form input:-moz-placeholder,.line-search-form input::-moz-placeholder {
+    color: #acd7ff
+}
+
+.line-search-form input:-ms-input-placeholder {
+    color: #acd7ff
+}
+
+.line-search-form input::-webkit-input-placeholder {
+    color: #acd7ff
+}
+
+
+
+
+
+.line-search-point input {
+    width: 100%
+}
+
+
+
+.line-search-submit {
+    position: absolute;
+    margin-top: 17px;
+    border-bottom: none;
+    width: 230px
+}
+
+.line-search-submit a {
+    font-size: 13px;
+    text-decoration: none;
+    opacity: 1;
+    line-height: 32px
+}
+
+.line-search-submit a:hover {
+    text-decoration: none;
+    opacity: .7
+}
+
+.line-search-submit .line-search-clear {
+    color: #fff
+}
+
+.line-search-submit .dir_submit {
+    display: inline-block;
+    float: right;
+    padding: 0 25px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #559ffb;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.21);
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.21);
+    -moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,.21)
+}
+
+.line-search-submit .dir_submit:hover {
+    background: #65a9fc
+}
+
+.line-search-submit span {
+    display: none
+}
+
+#indexbox .line-search-submit.butLoading .dir_submit {
+    color: #559ffb
+}
+
+
+body .planform-suggestion {
+    margin-top: 0
+}
+
+#dirBox {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    z-index: 6300;
+    overflow: hidden;
+    bottom: 0
+}
+
+#dirBox .dragtop {
+    top: -3px;
+    left: 0;
+    height: 10px;
+    width: 100%
+}
+
+#dirBox .dragbottom {
+    bottom: 0;
+    left: 0;
+    height: 10px;
+    width: 100%
+}
+
+#dirBox .dragleft {
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 30px
+}
+
+#dirBox .dragright {
+    right: 0;
+    top: 0;
+    width: 10px;
+    height: 30px
+}
+
+.dirbox {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 300px;
+    background: #fff;
+    border-radius: 2px 3px 3px 2px;
+    box-shadow: 0 2px 2px rgba(0,0,0,.15);
+    display: none
+}
+
+ul.tabs.dir_tab {
+    width: 200px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    height: 30px;
+    margin: 0 auto;
+    white-space: nowrap
+}
+
+ul.tabs.dir_tab li {
+    height: 30px;
+    width: 33.3333%;
+    line-height: 30px;
+    position: relative;
+    display: block;
+    float: left;
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: .8px
+}
+
+ul.tabs.dir_tab li a {
+    display: inline-block;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    opacity: .5
+}
+
+ul.tabs.dir_tab li:after {
+    content: "";
+    width: 0
+}
+
+ul.tabs.dir_tab li a:hover {
+    opacity: .72
+}
+
+ul.tabs.dir_tab li a.current {
+    opacity: 1
+}
+
+ul.tabs.dir_tab li a.icon-car {
+    background: url(/jcms/resources/statics/img/icon_car.png) no-repeat 50%;
+    background-size: 19px 19px
+}
+
+ul.tabs.dir_tab li a.icon-bus {
+    background: url(/jcms/resources/statics/img/icon_bus.png) no-repeat 50%;
+    background-size: 20px 19px
+}
+
+ul.tabs.dir_tab li a.icon-walk {
+    background: url(/jcms/resources/statics/img/icon_walk.png) no-repeat 50%;
+    background-size: 12px 19px
+}
+
+.dir_close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: #edf8ff;
+    cursor: pointer
+}
+
+.dir_close:hover {
+    color: #c9e1fe
+}
+
+.plan_wrap {
+    position: relative;
+    left: 0;
+    top: 0
+}
+
+.dirtips {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000
+}
+
+.dirSug,.dirtips {
+    width: 100%;
+    background: #fff
+}
+
+.dirSug .autocomplete-suggestions {
+    border: 0;
+    box-shadow: 0 2px 2px rgba(0,0,0,.15)
+}
+
+.dirlocSug {
+    display: none;
+    width: 100%;
+    box-shadow: 0 2px 2px rgba(0,0,0,.15);
+    background: #fff;
+    z-index: 100
+}
+
+.dirlocSug #locsug {
+    display: block;
+    color: #009cf9;
+    font-size: 14px;
+    height: 46px;
+    line-height: 46px;
+    margin-left: 14px;
+    padding-left: 32px;
+    background: #fff url(/jcms/resources/statics/img/loc_ok.png) 0 no-repeat;
+    text-decoration: none
+}
+
+.dir_qr {
+    bottom: 15px;
+    right: 70px;
+    border-radius: 8px
+}
+
+.dir_midautumn,.dir_qr {
+    position: absolute;
+    z-index: 1000
+}
+
+.dir_midautumn {
+    top: 150px;
+    left: 431px;
+    cursor: pointer
+}
+
+.step-infowindow-body {
+    display: block;
+    width: 324px;
+    font-size: 14px;
+    margin: 0 auto;
+    background: #fff;
+    text-indent: 5px
+}
+
+.step-infowindow-body dt {
+    border: 0
+}
+
+.step-infowindow-body dt:after {
+    width: 0
+}
+
+.step-infowindow-body .ref_line {
+    margin: 10px 0
+}
+
+.step-infowindow-body .ref_line .ref_line_name {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 700
+}
+
+.step-infowindow-body .routeseg {
+    display: block;
+    margin-left: 0;
+    margin-bottom: 10px;
+    border: 0
+}
+
+.step-infowindow-body .routeseg:after {
+    width: 0
+}
+
+.step-infowindow-body .routeseg:hover {
+    background: #fff
+}
+
+.step-infowindow-body.p_route .info:after {
+    width: 0
+}
+
+.step-infowindow-body.p_route li {
+    list-style: none
+}
+
+.step-infowindow-body.p_route li:hover {
+    background: #fff
+}
+
+.step-infowindow-body.p_route .p_icon {
+    text-align: left
+}
+
+.step-infowindow-body.p_route .info .address {
+    border: 0
+}
+
+.step-infowindow-body .from_to_iw {
+    padding: 14px 0
+}
+
+.step-infowindow-body .from_to_icon {
+    display: inline-block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal
+}
+
+.step-infowindow-body .from_to_icon.from_iw_icon {
+    background: #0091ff
+}
+
+.step-infowindow-body .from_to_icon.to_iw_icon {
+    background: #f75f41
+}
+
+.step-infowindow-body .from_to_name {
+    display: inline-block;
+    width: 280px;
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    text-indent: 6px;
+    font-weight: 700
+}
