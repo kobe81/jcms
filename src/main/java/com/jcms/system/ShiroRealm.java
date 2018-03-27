@@ -23,7 +23,7 @@ import com.jcms.service.ISysUserService;
 /**  
 * @ClassName: ShiroRealm  
 * @Description: 自定义权限认证  
-* @author ZYJ  
+* @author hontong
 * @date 2017年12月6日下午9:51:49
 *    
 */  

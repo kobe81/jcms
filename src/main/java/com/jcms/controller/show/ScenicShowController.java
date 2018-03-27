@@ -12,10 +12,10 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @Author: ZYJ
+ * @Author: hontong
  * @Description: 景点展示
  * @CreateDate: 2018/3/5 19:22
- * @UpdateUser: ZYJ
+ * @UpdateUser: hontong
  * @UpdateUser: 2018/3/5 19:22
  * @UpdateRemark: 更新说明
  * @Version: 1.0

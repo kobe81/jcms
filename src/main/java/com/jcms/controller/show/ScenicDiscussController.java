@@ -28,10 +28,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author: ZYJ
+ * @Author: hontong
  * @Description: 景点点评
  * @CreateDate: 2018/3/5 19:22
- * @UpdateUser: ZYJ
+ * @UpdateUser: hontong
  * @UpdateUser: 2018/3/5 19:22
  * @UpdateRemark: 更新说明
  * @Version: 1.0

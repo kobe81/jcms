@@ -6,10 +6,10 @@ import com.jcms.pojo.entity.scenic.ScenicDiscussEntity;
 import java.util.List;
 
 /**
- * @Author: ZYJ
+ * @Author: hontong
  * @Description: 景点点评
  * @CreateDate: 2018/3/23 22:43
- * @UpdateUser: ZYJ
+ * @UpdateUser: hontong
  * @UpdateUser: 2018/3/23 22:43
  * @UpdateRemark: 更新说明
  * @Version: 1.0

@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 /**  
 * @ClassName: LoginContorller  
 * @Description: 后台登录
-* @author ZYJ  
+* @author hontong
 * @date 2017年11月27日下午9:43:38
 *    
 */  

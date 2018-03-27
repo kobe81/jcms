@@ -1,10 +1,10 @@
 package com.jcms.pojo.dto;
 
 /**
- * @Author: ZYJ
+ * @Author: hontong
  * @Description: 角色Dto
  * @CreateDate: 2018/1/16 20:32
- * @UpdateUser: ZYJ
+ * @UpdateUser: hontong
  * @UpdateUser: 2018/1/16 20:32
  * @UpdateRemark: 更新说明
  * @Version: 1.0

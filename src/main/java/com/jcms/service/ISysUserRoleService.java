@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISysUserRoleService {
     /**
-     * @Author: ZYJ
+     * @Author: hontong
      * @Description: 根据用户名获取用户角色
      * @param:  username
      * @return: java.lang.String

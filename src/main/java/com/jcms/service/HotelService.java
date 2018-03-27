@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author: ZYJ
+ * @Author: hontong
  * @Description: 酒店服务
  * @CreateDate: 2018/3/15 20:37
- * @UpdateUser: ZYJ
+ * @UpdateUser: hontong
  * @UpdateUser: 2018/3/15 20:37
  * @UpdateRemark: 更新说明
  * @Version: 1.0

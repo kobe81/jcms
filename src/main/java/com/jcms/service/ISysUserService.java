@@ -7,7 +7,7 @@ import com.jcms.pojo.entity.sys.SysUserEntity;
 
 public interface ISysUserService {
 	/**
-	 * @Author: ZYJ
+	 * @Author: hontong
 	 * @Description: 保存用户
 	 * @param:  entity
 	 * @return: java.lang.Integer
@@ -17,7 +17,7 @@ public interface ISysUserService {
 	Integer saveSysUser(SysUserEntity entity) throws Exception;
 
 	/**
-	 * @Author: ZYJ
+	 * @Author: hontong
 	 * @Description: 查询用户列表
 	 * @param:
 	 * @return: java.util.List<com.jcms.pojo.entity.sys.SysUserEntity>
@@ -27,7 +27,7 @@ public interface ISysUserService {
 	 List<SysUserEntity> listSysUser();
 
 	/**
-	 * @Author: ZYJ
+	 * @Author: hontong
 	 * @Description: 删除指定用户
 	 * @param:   ids
 	 * @return: java.lang.Integer
@@ -36,7 +36,7 @@ public interface ISysUserService {
 	 **/
 	Integer deleteSysUser(List<String> ids) throws RuntimeException;
 	/**
-	 * @Author: ZYJ
+	 * @Author: hontong
 	 * @Description: 修改用户信息
 	 * @param:  * @param entity
 	 * @return: java.lang.Integer
@@ -45,7 +45,7 @@ public interface ISysUserService {
 	 **/
 	Integer updataSysUser(SysUserEntity entity) throws RuntimeException;
 	/**
-	 * @Author: ZYJ
+	 * @Author: hontong
 	 * @Description: 根据用户名称获取指定用户
 	 * @param:  userName
 	 * @return: com.jcms.pojo.entity.sys.SysUserEntity
@@ -54,7 +54,7 @@ public interface ISysUserService {
 	 **/
 	SysUserEntity getForUserName(String userName);
 	/**
-	 * @Author: ZYJ
+	 * @Author: hontong
 	 * @Description: 根据用户名获取用户角色
 	 * @param:  username
 	 * @return: java.lang.String
