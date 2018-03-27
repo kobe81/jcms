@@ -29,7 +29,6 @@ import java.util.List;
  * @UpdateUser: hontong
  * @UpdateUser: 2018/3/5 19:22
  * @UpdateRemark: 更新说明
- * @Version: 1.0
  **/
 @RestController
 @RequestMapping("/hotel")
