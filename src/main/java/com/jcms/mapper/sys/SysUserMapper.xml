@@ -4,11 +4,9 @@
   <resultMap id="BaseResultMap" type="com.jcms.pojo.entity.sys.SysUserEntity">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="telephone" jdbcType="VARCHAR" property="telephone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
@@ -17,37 +15,39 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.jcms.pojo.entity.sys.SysUserEntity">
-    insert into sys_user (username, nickname,
-      password, telephone, email,type,status,remark
+    insert into sys_user (username,
+      password, telephone, email,status,remark
       )
-    values (#{username,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},
+    values (#{username,jdbcType=VARCHAR},
       #{password,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
-      #{type,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.sys.SysUserEntity">
     update sys_user
     set username = #{username,jdbcType=VARCHAR},
-      nickname = #{nickname,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select id, username, nickname, password, telephone, email,type,status,remark
+    select id, username, password, telephone, email,status,remark
     from sys_user
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, username, nickname, password, telephone, email,type,status,remark
+    select id, username, password, telephone, email,status,remark
     from sys_user
   </select>
   <select id="getForUserName" resultMap="BaseResultMap">
-  	select id, username, nickname, password, telephone, email,type,status,remark
+  	select id, username, password, telephone, email,status,remark
     from sys_user where username = #{username,jdbcType=VARCHAR} and status ='1'
+  </select>
+  <select id="getForTelephone" resultMap="BaseResultMap">
+    select id, username, password, telephone, email,status,remark
+    from sys_user where telephone = #{telephone,jdbcType=VARCHAR} and status ='1'
   </select>
 </mapper>

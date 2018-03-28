@@ -31,6 +31,16 @@
 		 </mvc:message-converters>
 		 
 	 </mvc:annotation-driven>
+
+
+	<!-- 拦截器（登录） -->
+	<bean name="handlerInterceptor1" class="com.jcms.interceptor.LoginInterceptor"/>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<ref bean="handlerInterceptor1"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
      
      <!-- controller注解 -->
      <context:component-scan base-package="com.jcms.*">
@@ -39,6 +49,7 @@
      
 	<!-- 静态资源配置 -->
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
+
 	<!-- 视图层配置 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

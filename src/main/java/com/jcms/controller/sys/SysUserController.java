@@ -15,7 +15,7 @@ import com.jcms.pojo.entity.sys.SysUserEntity;
 import com.jcms.service.ISysUserService;
 
 /**
- * 系统用户管理
+ * 用户
  * @author hontong
  *
  */
@@ -26,24 +26,39 @@ public class SysUserController extends BaseController{
 	
 	@Resource
 	private ISysUserService userServiceImpl;
-	
-	
-	 @RequestMapping(value = "save",method = RequestMethod.POST)
+
+	/**
+	 * 用户进行注册接口
+	 * @param user
+	 * @return
+	 */
+	 @RequestMapping(value = "register",method = RequestMethod.POST)
 	 public BaseResultsDto saveSysUser(SysUserEntity user){
-		 log.info("进入用户保存");
+		 log.info("注册用户"+user.toString());
 		 try {
-             String psd=user.getPassword();
+             String password=user.getPassword();
              String username=user.getUsername();
-             //MD5加密
-             String encodeStr= DigestUtils.md5DigestAsHex((username+psd).getBytes());
+			 /**
+			  * MD5加密
+			  * 数据库加密的密码是（用户名+密码）
+			  *
+			  */
+             String encodeStr= DigestUtils.md5DigestAsHex((username+password).getBytes());
              user.setPassword(encodeStr);
-			 user.setStatus("1");
+             SysUserEntity userEntity=userServiceImpl.getForUserName(username);
+             if(userEntity!=null){
+				 return new BaseResultsDto(false,"用户名已经存在",null);
+			 }
+			 SysUserEntity userEntity2=userServiceImpl.getForTelephone(user.getTelephone());
+			 if(userEntity2!=null){
+				 return new BaseResultsDto(false,"手机号已经存在",null);
+			 }
 			userServiceImpl.saveSysUser(user);
-			return new BaseResultsDto(true,"查询成功",null);
+			return new BaseResultsDto(true,"注册成功",null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error(e.getMessage());
-			 return new BaseResultsDto(false,"查询成功",e.getMessage());
+			 return new BaseResultsDto(false,"注册失败",e.getMessage());
 		}
 	 }
 }

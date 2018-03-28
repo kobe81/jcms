@@ -1,8 +1,7 @@
 package com.jcms.controller.sys;
 
-import java.time.LocalDateTime;
-
 import com.jcms.pojo.dto.BaseResultsDto;
+import com.jcms.pojo.dto.SysUserDto;
 import com.jcms.pojo.entity.sys.SysUserEntity;
 import com.jcms.service.ISysUserService;
 import org.apache.shiro.SecurityUtils;
@@ -12,7 +11,6 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jcms.controller.common.BaseController;
-import com.jcms.pojo.dto.SysUserDto;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.net.URLEncoder;
 
 /**  
 * @ClassName: LoginContorller  
@@ -50,49 +50,45 @@ public class LoginContorller extends BaseController{
 	public ModelAndView jump(){
 		return new ModelAndView("/system/login");
 	}
-	
-	/**  
-	* @Title: 登录验证
-	* @Description:
-	* @param  userDto
-	* @return void    返回类型  
-	* @throws  
-	*/  
-	@RequestMapping(value="/doLogin",method=RequestMethod.POST)
-	public ModelAndView doLogin(SysUserDto userDto) {
-			UsernamePasswordToken token = new UsernamePasswordToken(userDto.getUsername(), userDto.getPassword());
-			//记住当前用户
-//			token.setRememberMe(true);
-			try {
-				SecurityUtils.getSubject().login(token);
-			} catch ( UnknownAccountException uae ) {
-				return returnMsg(false, "账号/密码错误", null);
-			}catch ( IncorrectCredentialsException ice ) {
-				return returnMsg(false, "账号/密码错误", null);
-			} catch ( LockedAccountException lae ) {
-				return returnMsg(false, "账号被锁定", null);
-			} catch ( ExcessiveAttemptsException eae ) {
-				return returnMsg(false, "账号/密码错误", null);
-			}
-			//继承AuthenticationExceptions可以实现自定义登录异常
-			userDto.setLoginTime(LocalDateTime.now());
-			return returnMsg(true, "登录成功", userDto);
-	}
 
 	/**
 	 * 登录
-	 * @param userDto
+	 * @param sysUserDto
 	 * @return
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public BaseResultsDto login(SysUserDto userDto, HttpServletRequest request) {
-        String username=userDto.getUsername();
-        String password=userDto.getPassword();
-        SysUserEntity user=userServiceImpl.getForUserName(username);
-        String encodeStr= DigestUtils.md5DigestAsHex((username+password).getBytes());
+	public BaseResultsDto login(SysUserDto sysUserDto, HttpServletRequest request,HttpServletResponse response) {
+		/**
+		 * number可能是手机号或者用户名
+		 */
+        String number= sysUserDto.getNumber();
+        String password= sysUserDto.getPassword();
+		SysUserEntity user=userServiceImpl.getForUserName(number);
+		//可能传的手机号
+        if(user==null){
+        	user=userServiceImpl.getForTelephone(number);
+		}
+		//如果手机和用户名都找不到用户，就说明不存在用户
+		if(user==null){
+			return new BaseResultsDto(false,"用户名或者密码错误，请检查",null);
+		}
+        String encodeStr= DigestUtils.md5DigestAsHex((user.getUsername()+password).getBytes());
         if (user!=null&&user.getPassword().equals(encodeStr)){
-            //用户验证登录
-            request.getSession().setAttribute("user",user);
+			request.getSession().setAttribute("user",user);
+			if(sysUserDto.getRememberPsd()){
+				//记住密码登录
+				Cookie c = new Cookie("username", URLEncoder.encode(user.getUsername()));
+				Cookie c1=new Cookie("password", URLEncoder.encode(user.getPassword()));
+				//一天的失效时间
+				c.setMaxAge(60*60*24);
+				c1.setMaxAge(60*60*24);
+				c.setPath(request.getContextPath());
+				c1.setPath(request.getContextPath());
+				System.out.println(c);
+				response.addCookie(c);
+				response.addCookie(c1);
+				System.out.println("记住密码了");
+			}
             return new BaseResultsDto(true,"登录成功",null);
         }else{
             return new BaseResultsDto(false,"用户名或者密码错误，请检查",null);
@@ -100,7 +96,7 @@ public class LoginContorller extends BaseController{
 	}
 
 	/**
-	 * 登录
+	 * 登出
 	 * @return
 	 */
 	@RequestMapping(value="/logout",method=RequestMethod.GET)

@@ -1,26 +1,34 @@
 package com.jcms.pojo.entity.sys;
 
+import com.jcms.config.CommonConstant;
+
 public class SysUserEntity {
 	 /** 主键 */ 
 	private Long id;
-	 /** 账号 */ 
+	/**
+	 * 用户名
+ 	 */
 	private String username;
-	 /** 昵称 */ 
-	private String nickname;
-	 /** 密码 */ 
-	private String password;
-	 /** 联系电话 */ 
+	/**
+	 * 手机号
+	 */
 	private String telephone;
-	 /** 电子邮件 */ 
-	private String email;
-	 /** 用户类型 */ 
-	private String type;
+	/**
+	 * 电子邮件
+	 */
+	private String email= CommonConstant.DEFAULT_VALUE;
+	/**
+	 * 密码
+ 	 */
+	private String password;
 	 /** 状态 
 	  * 0:删除  1：正常  2：锁定  3：未启用
 	  * */ 
-	private String status;
-	/** 备注 */ 
-	private String remark;
+	private String status="1";
+	/**
+	 * 备注
+	 */
+	private String remark=CommonConstant.DEFAULT_VALUE;
 
 	public Long getId() {
 		return id;
@@ -36,14 +44,6 @@ public class SysUserEntity {
 
 	public void setUsername(String username) {
 		this.username = username == null ? null : username.trim();
-	}
-
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname == null ? null : nickname.trim();
 	}
 
 	public String getPassword() {
@@ -68,14 +68,6 @@ public class SysUserEntity {
 
 	public void setEmail(String email) {
 		this.email = email == null ? null : email.trim();
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public String getStatus() {

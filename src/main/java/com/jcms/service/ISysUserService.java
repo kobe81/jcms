@@ -18,16 +18,6 @@ public interface ISysUserService {
 
 	/**
 	 * @Author: hontong
-	 * @Description: 查询用户列表
-	 * @param:
-	 * @return: java.util.List<com.jcms.pojo.entity.sys.SysUserEntity>
-	 * @Date: 2018/1/15 21:48
-	 * @Exception:
-	 **/
-	 List<SysUserEntity> listSysUser();
-
-	/**
-	 * @Author: hontong
 	 * @Description: 删除指定用户
 	 * @param:   ids
 	 * @return: java.lang.Integer
@@ -53,13 +43,11 @@ public interface ISysUserService {
 	 * @Exception:
 	 **/
 	SysUserEntity getForUserName(String userName);
+
 	/**
-	 * @Author: hontong
-	 * @Description: 根据用户名获取用户角色
-	 * @param:  username
-	 * @return: java.lang.String
-	 * @Date: 2018/1/16 20:19
-	 * @Exception:
-	 **/
-	public List<SysRoleDto> getRoleForUser(String username);
+	 * 根据手机号查询用户
+	 * @param telephone
+	 * @return
+	 */
+	SysUserEntity getForTelephone(String telephone);
 }

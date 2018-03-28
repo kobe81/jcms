@@ -23,7 +23,7 @@
 											<p>婺源，位于赣东北，是一颗镶嵌在皖、浙、赣三省交界处的绿色明珠。婺源历史悠久，唐开元二十八年（公元740年）置县，在历史上曾隶属安徽管辖，是古徽州一府六县之一，素有书乡、茶乡之称。</p>
 										</div>
 									</li>
-									<%--<li>
+									&lt;%&ndash;<li>
 										<div class="caption">
 											<h3>Middle Loup River Property-NEW!</h3>
 											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. Phasellus porta. Fusce suscipit varius mi. Lorem ipsum dolor sit amet, </p>
@@ -34,7 +34,7 @@
 											<h3>Western Heartlands - Wayoming</h3>
 											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. Phasellus porta. Fusce suscipit varius mi. Lorem ipsum dolor sit amet, </p>
 										</div>
-									</li>--%>
+									</li>&ndash;%&gt;
 								</ul>
 							</div>
 						</div>

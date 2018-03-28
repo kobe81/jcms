@@ -24,13 +24,6 @@ public class SysUserServiceImpl implements ISysUserService {
 		log.info("进入系统用户保存");
 		return sysmapper.insert(entity);
 	}
-
-	
-	public List<SysUserEntity> listSysUser() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 	public Integer deleteSysUser(List<String> ids) {
 		// TODO Auto-generated method stub
@@ -43,12 +36,14 @@ public class SysUserServiceImpl implements ISysUserService {
 		return null;
 	}
 
-	
+	@Override
 	public SysUserEntity getForUserName(String userName) {
 		return sysmapper.getForUserName(userName);
 	}
 
-	public List<SysRoleDto> getRoleForUser(String username) {
-		return null;
+	@Override
+	public SysUserEntity getForTelephone(String telephone) {
+		return sysmapper.getForTelephone(telephone);
 	}
+
 }

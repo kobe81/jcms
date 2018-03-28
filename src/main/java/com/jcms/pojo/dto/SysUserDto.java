@@ -1,48 +1,47 @@
 package com.jcms.pojo.dto;
 
 
+import com.jcms.config.CommonConstant;
+
 import java.time.LocalDateTime;
 
 public class SysUserDto {
 	
 	/**
-	 * 用户账号
+	 * 用户名/手机号
 	 */
-	private String username;
+	private String number;
 	/**
 	 * 用户密码
 	 */
 	private String password;
 	
 	/**
-	 * 登录时间
+	 * 是否记住密码
 	 */
-	private LocalDateTime loginTime;
-	
-	public String getUsername() {
+	private Boolean rememberPsd= CommonConstant.NOT_SELECT;
 
-		return username;
-
+	public String getNumber() {
+		return number;
 	}
-	public void setUsername(String username) {
 
-		this.username = username;
-
+	public void setNumber(String number) {
+		this.number = number;
 	}
+
 	public String getPassword() {
-
 		return password;
 	}
-	public void setPassword(String password) {
 
+	public void setPassword(String password) {
 		this.password = password;
 	}
-	public LocalDateTime getLoginTime() {
 
-		return loginTime;
+	public Boolean getRememberPsd() {
+		return rememberPsd;
 	}
-	public void setLoginTime(LocalDateTime loginTime) {
-		this.loginTime = loginTime;
+
+	public void setRememberPsd(Boolean rememberPsd) {
+		this.rememberPsd = rememberPsd;
 	}
-	
 }
