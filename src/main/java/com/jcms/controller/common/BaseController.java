@@ -21,6 +21,7 @@ public class BaseController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("success", success);
 		mv.addObject("msg", msg);
+
 		mv.addObject("data", data);
 
 		return mv;
