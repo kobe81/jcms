@@ -168,7 +168,7 @@ function register() {
     });
 }
 
-/* logout: function () {
+ function logout() {
      $.get(ctx + "/sys/logout", function (data, status) {
          var data = $.parseJSON(data);
          if (data.success) {
@@ -177,5 +177,4 @@ function register() {
              layer.msg('退出系统失败！', {time: 2000, icon: 5});
          }
      });
- }
-}*/
+}

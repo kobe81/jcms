@@ -4,13 +4,6 @@ import com.jcms.pojo.dto.BaseResultsDto;
 import com.jcms.pojo.dto.SysUserDto;
 import com.jcms.pojo.entity.sys.SysUserEntity;
 import com.jcms.service.ISysUserService;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.ExcessiveAttemptsException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,9 +39,9 @@ public class LoginContorller extends BaseController{
 	* @return ModelAndView    返回类型  
 	* @throws  
 	*/  
-	@RequestMapping("/login")
+	@RequestMapping("/Rindex")
 	public ModelAndView jump(){
-		return new ModelAndView("/system/login");
+		return new ModelAndView("/index.jsp");
 	}
 
 	/**
@@ -99,10 +92,11 @@ public class LoginContorller extends BaseController{
 	 * 登出
 	 * @return
 	 */
-	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	@RequestMapping(value="/logout")
 	public BaseResultsDto loginout(HttpServletRequest request) {
 		//用户验证登录
-        request.getSession().removeAttribute("user");
+		System.out.println("进来了");
+		request.getSession().removeAttribute("user");
 		return new BaseResultsDto(true,"退出成功",null);
 	}
 	
@@ -112,11 +106,11 @@ public class LoginContorller extends BaseController{
 	* @param
 	* @return void    返回类型  
 	* @throws  
-	*/  
+	*//*
 	@RequestMapping(value="/doLogout",method=RequestMethod.POST)
 	public ModelAndView doLogout() {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
-		return new ModelAndView("/system/login");
-	}
+		return new ModelAndView("/index");
+	}*/
 }

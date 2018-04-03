@@ -34,13 +34,13 @@
 
 
 	<!-- 拦截器（登录） -->
-	<bean name="handlerInterceptor1" class="com.jcms.interceptor.LoginInterceptor"/>
+	<!--<bean name="handlerInterceptor1" class="com.jcms.interceptor.LoginInterceptor"/>
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<ref bean="handlerInterceptor1"/>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors>-->
      
      <!-- controller注解 -->
      <context:component-scan base-package="com.jcms.*">

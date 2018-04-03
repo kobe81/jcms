@@ -141,7 +141,7 @@
         </c:if>
         <c:if test="${user !=null}">
             <a href="/in" class="btn btn-success" id="userId" val="${user.id}">${user.username}</a>&nbsp;|&nbsp;
-            <a href="/in" class="btn btn-success">退出</a>
+            <a href="javascript:logout()" class="btn btn-success">退出</a>
         </c:if>
     </div>
     <!-- 会员登录  -->

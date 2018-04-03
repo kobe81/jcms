@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sound.midi.Soundbank;
 
 import com.jcms.pojo.entity.sys.SysUserEntity;
 import com.jcms.service.ISysUserService;
@@ -42,8 +43,10 @@ private ISysUserService iSysUserService;
             SysUserEntity userEntity=iSysUserService.getForUserName(username);
             if (userEntity != null) {
                 request.getSession().setAttribute("user", userEntity);
+                System.out.println("设置了值啊啊啊啊啊啊");
             }
-            response.sendRedirect("index.jsp");
+            /*request.getRequestDispatcher("/index.jsp").forward(request, response);*/
+            response.sendRedirect("/index.jsp");
             return false;
         }
 
