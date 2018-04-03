@@ -22,7 +22,7 @@ public class SysUserEntity {
  	 */
 	private String password;
 	 /** 状态 
-	  * 0:删除  1：正常  2：锁定  3：未启用
+	  * 0:删除  1：正常
 	  * */ 
 	private String status="1";
 	/**
