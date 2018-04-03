@@ -23,6 +23,7 @@
 						</div>
 					</c:if>
 					<div>
+
 						${info.content}
 					</div>
 				</div>
