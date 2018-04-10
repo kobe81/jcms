@@ -16,7 +16,13 @@ public class ScenicDiscussDto {
 
     private Date creatTime;
 
+    private int praise;
+
+    private int unpraise;
+
     private List<String> filePath;
+
+    private List<ReplyDto> replys;
 
     public Long getId() {
         return id;
@@ -72,5 +78,29 @@ public class ScenicDiscussDto {
 
     public void setFilePath(List<String> filePath) {
         this.filePath = filePath;
+    }
+
+    public List<ReplyDto> getReplys() {
+        return replys;
+    }
+
+    public void setReplys(List<ReplyDto> replys) {
+        this.replys = replys;
+    }
+
+    public int getPraise() {
+        return praise;
+    }
+
+    public void setPraise(int praise) {
+        this.praise = praise;
+    }
+
+    public int getUnpraise() {
+        return unpraise;
+    }
+
+    public void setUnpraise(int unpraise) {
+        this.unpraise = unpraise;
     }
 }

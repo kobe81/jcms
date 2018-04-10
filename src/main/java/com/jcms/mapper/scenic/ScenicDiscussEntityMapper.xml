@@ -21,7 +21,8 @@
   <insert id="saveFile" parameterType="com.jcms.pojo.entity.sys.SysFileEntity">
     insert into sys_file (PIC_URL,JOIN_ID,CREAT_TIME,TYPE) VALUES (#{picUrl},#{joinId},#{creatTime},'discuss')
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.scenic.ScenicDiscussEntity">
+
+    <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.scenic.ScenicDiscussEntity">
     update scenic_discuss
     set user_id = #{userId,jdbcType=BIGINT},
       scenice_id = #{sceniceId,jdbcType=BIGINT},
@@ -39,7 +40,7 @@
     from scenic_discuss
   </select>
     <select id="selectDiscuss" resultType="com.jcms.pojo.dto.ScenicDiscussDto">
-    select sd.id,username userName,scenice_id sceniceId, content, creat_time creatTime
+    select sd.id,user_id userId,username userName,scenice_id sceniceId, content, creat_time creatTime
     from scenic_discuss sd
     LEFT JOIN sys_user u ON user_id=u.id
     WHERE  scenice_id=#{scenicId}
@@ -50,4 +51,39 @@
      WHERE JOIN_ID=#{joinId} AND type='discuss'
      ORDER BY  creat_time
   </select>
+
+  <select id="getReply" resultType="com.jcms.pojo.dto.ReplyDto">
+    select content,creat_time,username FROM reply
+    LEFT JOIN sys_user u on u.id=user_id
+    WHERE discuss_id = #{discussId}
+    ORDER BY creat_time DESC
+  </select>
+
+  <select id="getPraiseNums" resultType="java.util.Map">
+    select up,down from
+    (SELECT
+    count(1) up
+     FROM praise  where type='up'and discuss_id=#{discussId}) up,
+    (SELECT
+    count(1) down
+     FROM praise  where type='down'and discuss_id=#{discussId}) down
+  </select>
+  <select id="getPraise" resultType="int">
+    select count(1) FROM praise WHERE user_id=#{userId} AND  type=#{type} AND discuss_id=#{discussId}
+  </select>
+  <delete id="delPraise">
+    DELETE FROM praise WHERE user_id=#{userId} AND  type=#{type} AND discuss_id=#{discussId}
+  </delete>
+  <insert id="saveReply" parameterType="com.jcms.pojo.dto.ReplyDto">
+    INSERT INTO reply (user_id,content,creat_time,discuss_id) VALUES
+    (#{userId},#{content},#{creatTime},#{discussId})
+  </insert>
+  <insert id="savePraise">
+    INSERT INTO praise (user_id,type,discuss_id) VALUES
+    (#{userId},#{type},#{discussId})
+  </insert>
+
+  <delete id="delReply" parameterType="Long">
+    delete FROM reply where discuss_id=#{discussId}
+  </delete>
 </mapper>

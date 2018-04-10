@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.jcms.controller.common.BaseController;
 import com.jcms.pojo.dto.BaseResultsDto;
+import com.jcms.pojo.dto.ReplyDto;
 import com.jcms.pojo.dto.ScenicDiscussDto;
 import com.jcms.pojo.dto.ScenicInfoDto;
 import com.jcms.pojo.entity.scenic.ScenicDiscussEntity;
@@ -110,6 +111,61 @@ public class ScenicDiscussController extends BaseController {
             return new BaseResultsDto(false,"评论失败");
         }
 
+    }
+
+    /**
+     * 评论回复
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "/reply",method = RequestMethod.POST)
+    public BaseResultsDto reply(ReplyDto replyDto, HttpServletRequest request) {
+        try {
+            //获取当前登录人员
+            SysUserEntity user= (SysUserEntity) request.getSession().getAttribute("user");
+            replyDto.setUserId(user.getId());
+            replyDto.setCreatTime(new Date());
+            discussService.saveReply(replyDto);
+            return new BaseResultsDto(true,"留言成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new BaseResultsDto(false,"留言失败");
+        }
+
+    }
+
+    /**
+     * 点赞评论
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "/praise")
+    public BaseResultsDto praise(Long id,String type,HttpServletRequest request) {
+        try {
+            //获取当前登录人员
+            SysUserEntity user= (SysUserEntity) request.getSession().getAttribute("user");
+            discussService.savePraise(user.getId(),id,type);
+            return new BaseResultsDto(true,"点赞成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new BaseResultsDto(false,"点赞失败");
+        }
+
+    }
+    /**
+     * 删除评论
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "/del")
+    public BaseResultsDto delDiscuss(Long id) {
+        try {
+            discussService.del(id);
+            return new BaseResultsDto(true,"删除评论成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new BaseResultsDto(false,"删除评论失败");
+        }
 
     }
 

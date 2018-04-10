@@ -22,7 +22,7 @@
 			<h2>美丽婺源</h2>
 			<div class="properties-grids">
 				<c:forEach var="scenic" items="${scenics}">
-					<div class="col-md-4 propertie-grids view view-fourth">
+					<div class="col-md-4 propertie-grids view view-fourth" style="width: 31.5%">
 						<a class="example-image-link" href="${ctx}/scenic/jump/scenicInfo?id=${scenic.id}">
 							<img src="${ctx}${scenic.filepath !=null and scenic.filepath !=""?scenic.filepath:'/resources/showtemp/images/g4.jpg'}" class="img-responsive" alt=""/>
 							<div class="mask">

@@ -2,7 +2,8 @@ $(function(){
     //初始酒店列表
     hotel.init_list('init');
 });
-
+var currentPage=1;
+var totalPage;
 var hotel={
     init_list:function(type){
         var param={};
@@ -10,15 +11,27 @@ var hotel={
             param={
                 "name":$("#name").val(),
                 "level":$("#level").val(),
-                "type":$("#type").val()
+                "type":$("#type").val(),
+                "price":$("#price").val(),
+                "currentPage":type=="page"?currentPage:1,
+                "pageSize":1
+
+            }
+        }else{
+            param={
+                "currentPage":1,
+                "pageSize":1
             }
         }
-
         $.post(ctx+"/hotel/getlist",param,function(data,status){
             var html="";
             var data=$.parseJSON(data);
+            $(".am-pagination").hide();
             if(data.success&&data.data){
-                var hotels=data.data;
+                var hotels=data.data.list;
+                if(hotels.length>0){
+                    $(".am-pagination").show();
+                }
                 $.each(hotels,function(i,o){
                     var level="";
                     for(var l=0;l<o.hotelLevel;l++){
@@ -36,11 +49,54 @@ var hotel={
 
                 });
                 $("#hotellist").html(html);
+                if (type=="init"||type=="query"){
+                    //清除旧页码
+                    $("li").remove(".pageNum");
+                //页码
+                totalPage=data.data.pages;
+                var pageHtml="";
+                for (var i=0;i<totalPage;i++){
+                    var pageNum=(i+1);
+                    if(pageNum==1){
+                        pageHtml+='<li class="pageNum am-active" id="'+pageNum+'"><a href="javascript:hotel.page('+pageNum+')">'+pageNum+'</a></li>';
+                    }else{
+                        pageHtml+='<li class="pageNum" id="'+pageNum+'"><a href="javascript:hotel.page('+pageNum+')">'+pageNum+'</a></li>';
+                    }
+
+                }
+                $(".am-pagination-prev").after(pageHtml);
+                }
             }
 
         });
     },
     jump_info:function(id){
         window.location.href=ctx+"/hotel/jump/hotel_info?id="+id;
+    },
+    page:function(t){
+        var paganumber;
+        if(t=='first'){
+            paganumber=1;
+        }else if(t=='pgup'){
+            paganumber=$(".am-pagination .am-active>a").text();
+            paganumber=parseInt(paganumber);
+            if(paganumber>1){
+                paganumber=paganumber-1;
+            }
+        }else if(t=='pgdn'){
+            paganumber=$(".am-pagination .am-active>a").text();
+            paganumber=parseInt(paganumber);
+            if(paganumber<totalPage){
+                paganumber=paganumber+1;
+            }
+        }else if(t=='end'){
+            paganumber=totalPage;
+        }else{
+            paganumber=t;
+        }
+        currentPage=paganumber;
+        $(".am-pagination li").removeClass("am-active");
+        $(".am-pagination #"+paganumber).addClass("am-active");
+        hotel.init_list('page');
     }
 }

@@ -46,8 +46,8 @@
     from rooms where hotel_id = #{hotelId}
   </select>
   <insert id="saveReserve" parameterType="com.jcms.pojo.dto.RoomsDto">
-    INSERT INTO user_room (user_id,hotel_id,room_id,numbers,stay_in_time,days)
-    VALUES (#{userId},#{hotelId},#{roomId},#{numbers},#{inTime},#{days})
+    INSERT INTO order_item (user_id,hotel_id,room_id,numbers,stay_in_time,days,mans,order_id)
+    VALUES (#{userId},#{hotelId},#{roomId},#{numbers},#{inTime},#{days},#{mans},#{orderId})
   </insert>
   <update id="updateRooms">
     update rooms
@@ -55,4 +55,17 @@
     numbers = #{numbers,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <update id="updateOrder">
+    update user_order
+    set
+    order_time =#{orderTime}
+    where id = #{orderId}
+  </update>
+  <select id="getOrder" parameterType="Long" resultType="Long">
+    select id FROM user_order WHERE state=0 AND  user_id = #{userId} and hotel_id=#{hotelId}
+  </select>
+  <insert id="saveOrder" parameterType="com.jcms.pojo.dto.OrderDto" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    INSERT INTO user_order (user_id,order_time,state,hotel_id)
+    VALUES (#{userId},#{orderTime},#{state},#{hotelId})
+  </insert>
 </mapper>

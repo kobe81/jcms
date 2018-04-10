@@ -37,7 +37,7 @@
     from hotel
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <select id="selectAll" parameterType="java.lang.String" resultType="com.jcms.pojo.dto.HotelDto" >
+  <select id="selectAll" parameterType="java.lang.String" resultType="com.jcms.pojo.dto.HotelDto" useCache="false" >
     select h.id, hotel_name hotelName, hotel_level hotelLevel, hotel_type hotelType,
     address, remark, lowest_price lowestPrice,PIC_URL picPath
     from hotel h LEFT JOIN sys_file ON h.id=join_id AND  type='hotel'
@@ -51,7 +51,17 @@
       <if test="type !=null and type!='' ">
         and hotel_type =#{type}
       </if>
+      <if test="upPrice !=null and upPrice!='' ">
+        and lowest_price &gt;= #{upPrice}
+      </if>
+      <if test="dowPrice !=null and dowPrice!='' ">
+        and lowest_price &lt;=#{dowPrice}
+      </if>
     </where>
     ORDER BY hotel_level DESC
   </select>
+    <select id="getHotelFile" resultType="string" parameterType="Long">
+      select PIC_URL path FROM  sys_file where JOIN_ID=#{hotelId} and TYPE='hotel_info'
+      ORDER BY CREAT_TIME
+    </select>
 </mapper>

@@ -14,7 +14,10 @@ public interface HotelEntityMapper {
 
     HotelEntity selectByPrimaryKey(Long id);
 
-    List<HotelDto> selectAll(@Param("hotelName") String hotelName, @Param("level") Integer level, @Param("type") String type);
+    List<HotelDto> selectAll(@Param("hotelName") String hotelName, @Param("level") Integer level,
+                             @Param("type") String type,@Param("upPrice") String upPrice,@Param("dowPrice") String dowPrice);
 
     int updateByPrimaryKey(HotelEntity record);
+
+    List<String> getHotelFile(@Param("hotelId")Long hotelId);
 }

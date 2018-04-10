@@ -1,5 +1,6 @@
 package com.jcms.service;
 
+import com.jcms.pojo.dto.ReplyDto;
 import com.jcms.pojo.dto.ScenicDiscussDto;
 import com.jcms.pojo.entity.scenic.ScenicDiscussEntity;
 
@@ -24,4 +25,12 @@ public interface ScenicDiscussService {
     public List<ScenicDiscussDto> getDiscuss(Long scenicId);
 
     public void saveDiscuss(ScenicDiscussEntity discussEntity,String files,String path) throws Exception;
+
+    public void saveReply(ReplyDto replyDto) throws Exception;
+
+    public void del(Long discussId) throws Exception;
+
+    public void savePraise(Long userId,Long discussId,String type) throws Exception;
+
+
 }

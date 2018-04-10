@@ -65,22 +65,11 @@
     <div>
         <div data-am-widget="slider" class="am-slider am-slider-default pic_show" data-am-slider='{}' >
             <ul class="am-slides">
+                <c:forEach items="${info.pics}" var="pics">
                 <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg">
-
+                    <img src="${ctx}${pics}">
                 </li>
-                <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg">
-
-                </li>
-                <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg">
-
-                </li>
-                <li>
-                    <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg">
-
-                </li>
+                </c:forEach>
             </ul>
         </div>
     </div>
@@ -98,7 +87,7 @@
                     </div>
                     <div class="but">
                         <label>￥：<label style="color: #F37B1D;">${room.roomPrice}</label></label>
-                        <button type="button" ${room.numbers>0?' ':'disabled'} onclick="hotel_info.reserve(${info.hotel.id},${room.id},${room.numbers})" class="am-btn am-btn-xs am-btn-warning">马上预订</button>
+                        <button type="button" ${room.numbers>0?' ':'disabled'} onclick="hotel_info.reserve(${info.hotel.id},${room.id},${room.numbers},${room.beds})" class="am-btn am-btn-xs am-btn-warning">马上预订</button>
                     </div>
                 </div>
             </div>

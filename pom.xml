@@ -93,6 +93,16 @@
 			<artifactId>mybatis</artifactId>
 			<version>${mybatis}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.1.2</version>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>net.sf.jsqlparser</groupId>-->
+			<!--<artifactId>jsqlparser</artifactId>-->
+			<!--<version>0.8.0</version>-->
+		<!--</dependency>-->
 		<!-- mybatis/spring包 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -171,8 +181,13 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.2.1</version>
 		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 	<build>
 		<finalName>jcms</finalName>
 		<plugins>

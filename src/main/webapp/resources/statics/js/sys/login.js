@@ -172,7 +172,7 @@ function register() {
      $.get(ctx + "/sys/logout", function (data, status) {
          var data = $.parseJSON(data);
          if (data.success) {
-             location.reload();
+             window.location.href=ctx+"/";
          } else {
              layer.msg('退出系统失败！', {time: 2000, icon: 5});
          }

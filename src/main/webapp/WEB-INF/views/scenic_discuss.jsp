@@ -80,6 +80,11 @@
             filter:alpha(opacity=0);
             cursor:pointer;
         }
+        blockquote {
+            padding: 5px 10px !important;
+            margin: 0 0 10px !important;
+            font-size: 12px !important;
+        }
     </style>
 
 </head>
@@ -112,7 +117,7 @@
         <div class="hot">
             全部评论（<label id="total"></label>）
         </div>
-        <%--酒店列表--%>
+
         <div class="list">
             <ul id="discuss_list" class="am-comments-list am-comments-list-flip" style="margin-bottom: 10px;"></ul>
         </div>
@@ -120,10 +125,10 @@
             <div class="tool">
             <div class="fileInputContainer">
                 <c:if test="${user ==null}">
-                    <input class="fileInput" disabled="disabled" accept="image/png, image/jpeg, image/gif, image/jpg" type="file" id="file" onchange="discuss.upload()"/>
+                    <input class="fileInput" disabled="disabled" accept="image/png, image/jpeg, image/gif, image/jpg" type="file" id="uploadfile" onchange="discuss.upload()"/>
                 </c:if>
                 <c:if test="${user !=null}">
-                    <input class="fileInput" accept="image/png, image/jpeg, image/gif, image/jpg" type="file" id="file" onchange="discuss.upload()"/>
+                    <input class="fileInput" accept="image/png, image/jpeg, image/gif, image/jpg"  type="file" id="uploadfile" onchange="discuss.upload()"/>
                 </c:if>
             </div>
             </div>

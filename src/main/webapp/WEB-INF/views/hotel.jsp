@@ -109,6 +109,19 @@
                     <option value="民宿">民宿</option>
                     <option value="连锁">连锁</option>
                     <option value="国际">国际</option>
+                    <option value="青旅">青旅</option>
+                </select>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label class="am-u-sm-3 am-form-label">价格</label>
+            <div class="am-u-sm-9">
+                <select id="price">
+                    <option value="">不限</option>
+                    <option value="100-200">100-200</option>
+                    <option value="200-300">200-300</option>
+                    <option value="300-400">300-400</option>
+                    <option value="400">400以上</option>
                 </select>
             </div>
         </div>
@@ -130,6 +143,26 @@
         <%--酒店列表--%>
         <div class="list">
             <ul id="hotellist" class="am-list am-list-static"></ul>
+                <div>
+                <ul data-am-widget="pagination" class="am-pagination am-pagination-default" style="display: none;">
+
+                    <li class="am-pagination-first ">
+                        <a href="javascript:hotel.page('first')">第一页</a>
+                    </li>
+
+                    <li class="am-pagination-prev">
+                        <a href="javascript:hotel.page('pgup')">上一页</a>
+                    </li>
+
+                    <li class="am-pagination-next ">
+                        <a href="javascript:hotel.page('pgdn')" class="">下一页</a>
+                    </li>
+
+                    <li class="am-pagination-last ">
+                        <a href="javascript:hotel.page('end')" class="">最末页</a>
+                    </li>
+                </ul>
+        </div>
         </div>
     </div>
 </div>

@@ -11,19 +11,19 @@
     <result column="days" property="days" jdbcType="INTEGER" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from user_room
+    delete from order_item
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.jcms.pojo.entity.hotel.UserRoomEntity" >
-    insert into user_room (id, user_id, hotel_id, 
+    insert into order_item (user_id, hotel_id,
       room_id, numbers, stay_in_time, 
       days)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{hotelId,jdbcType=BIGINT}, 
+    values (#{userId,jdbcType=BIGINT}, #{hotelId,jdbcType=BIGINT},
       #{roomId,jdbcType=BIGINT}, #{numbers,jdbcType=INTEGER}, #{stayInTime,jdbcType=TIMESTAMP}, 
       #{days,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.jcms.pojo.entity.hotel.UserRoomEntity" >
-    update user_room
+    update order_item
     set user_id = #{userId,jdbcType=BIGINT},
       hotel_id = #{hotelId,jdbcType=BIGINT},
       room_id = #{roomId,jdbcType=BIGINT},
@@ -34,11 +34,11 @@
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select id, user_id, hotel_id, room_id, numbers, stay_in_time, days
-    from user_room
+    from order_item
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
     select id, user_id, hotel_id, room_id, numbers, stay_in_time, days
-    from user_room
+    from order_item
   </select>
 </mapper>

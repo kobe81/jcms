@@ -13,9 +13,11 @@
 <script src="${ctx}/resources/showtemp/js/responsiveslides.min.js"></script>
 <script src="${ctx}/resources/layer/layer.js"></script>
 <script src="${ctx}/resources/amazeui/assets/js/amazeui.min.js"></script>
+<script src="${ctx}/resources/amazeui/assets/js/jquery-1.10.2.min.js"></script>
+<script src="${ctx}/resources/amazeui/assets/js/amazeui.widgets.helper.js"></script>
+<script src="${ctx}/resources/amazeui/assets/js/handlebars.min.js"></script>
 <link rel="stylesheet" href="${ctx}/resources/statics/regist_login/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="${ctx}/resources/statics/regist_login/css/login.css"/>
-<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
 <script src="${ctx}/resources/statics/regist_login/bootstrap/js/bootstrap.min.js"></script>
 <script src="${ctx}/resources/statics/js/sys/login.js"></script>
 
@@ -26,7 +28,7 @@
     .login {
         margin-top: -65px;
         float: right;
-        margin-right: 30px;
+        margin-right: 20px;
     }
 
     .tq2345 {
@@ -117,7 +119,7 @@
                     <li><a href="${ctx}/hotel/jump/hotel">酒店预订</a></li>
                     <li><a href="${ctx}/scenic/jump/path_planning">线路规划</a></li>
                     <li><a href="${ctx}/scenic/jump/scenic_discuss">景点点评</a></li>
-                    <li><a href="">旅游天气</a></li>
+                    <li><a href="${ctx}/weather/wuyuan">旅游天气</a></li>
                 </ul>
                 <!--script-nav-->
                 <script>
@@ -134,13 +136,16 @@
                 src="//tianqi.2345.com/plugin/widget/index.htm?s=2&z=3&t=1&v=2&d=1&bd=0&k=000000&f=000000&ltf=009944&htf=cc0000&q=0&e=0&a=0&c=60498&w=255&h=64&align=center"></iframe>
     </div>
 
-    <div id="login" class="login">
+    <div id="login" class="login am-dropdown" data-am-dropdown>
         <c:if test="${user ==null}">
             <a id="Login_start_" class="btn btn-danger" style="width:50px;height:40px;border-radius: 0;">登陆</a>
             <a id="Regist_start_" class="btn btn-success" style="width:50px;height:40px;border-radius: 0;">注册</a>
         </c:if>
         <c:if test="${user !=null}">
-            <a href="/in" class="btn btn-success" id="userId" val="${user.id}">${user.username}</a>&nbsp;|&nbsp;
+            <a href="javascript:void(0)" class="btn btn-success am-dropdown-toggle" data-am-dropdown-toggle id="userId" val="${user.id}">${user.username}&nbsp;<span class="am-icon-caret-down"></span></a>&nbsp;|&nbsp;
+            <ul class="am-dropdown-content">
+                <li><a href="${ctx}/hotel/jump/hotel_order/?id=${user.id}">我的订单</a></li>
+            </ul>
             <a href="javascript:logout()" class="btn btn-success">退出</a>
         </c:if>
     </div>

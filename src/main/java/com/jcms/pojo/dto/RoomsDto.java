@@ -12,6 +12,10 @@ public class RoomsDto {
 
     private Long userId;
 
+    private Long orderId;
+
+    private Integer mans;
+
     private String roomType;
 
     private BigDecimal roomPrice;
@@ -112,5 +116,21 @@ public class RoomsDto {
 
     public void setAllNumbers(Integer allNumbers) {
         this.allNumbers = allNumbers;
+    }
+
+    public Integer getMans() {
+        return mans;
+    }
+
+    public void setMans(Integer mans) {
+        this.mans = mans;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }

@@ -82,4 +82,18 @@ public class HotelDto {
     public void setPicPath(String picPath) {
         this.picPath = picPath;
     }
+
+    @Override
+    public String toString() {
+        return "HotelDto{" +
+                "id=" + id +
+                ", hotelName='" + hotelName + '\'' +
+                ", hotelLevel=" + hotelLevel +
+                ", hotelType='" + hotelType + '\'' +
+                ", address='" + address + '\'' +
+                ", remark='" + remark + '\'' +
+                ", lowestPrice=" + lowestPrice +
+                ", picPath='" + picPath + '\'' +
+                '}';
+    }
 }

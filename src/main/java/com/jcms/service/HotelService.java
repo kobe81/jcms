@@ -24,9 +24,10 @@ public interface HotelService {
      * @param hotelName
      * @param level
      * @param type
+     * @param price
      * @return
      */
-    public List<HotelDto> getHotelList(String hotelName,Integer level,String type);
+    public List<HotelDto> getHotelList(String hotelName,Integer level,String type,String price);
     /**
      * 查询酒店详情
      * @param id

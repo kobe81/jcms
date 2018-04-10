@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jcms.mapper.hotel.OrderMapper" >
+
+
+  <delete id="delOrder">
+    delete FROM user_order WHERE id=#{orderId}
+  </delete>
+
+  <delete id="delOrderDetail">
+    delete FROM order_item WHERE id=#{detailId}
+  </delete>
+
+  <delete id="delOrderALL">
+    delete FROM order_item WHERE order_id=#{orderId}
+  </delete>
+
+  <select id="getOrder" resultType="com.jcms.pojo.dto.OrderDto">
+    select o.id,order_time orderTime,state,hotel_name hotelName,hotel_type hotelType FROM user_order o
+    left join hotel h on hotel_id=h.id
+    where user_id=#{userId} and state=#{state}
+    ORDER BY order_time DESC
+  </select>
+  <select id="getOrderItem" resultType="com.jcms.pojo.dto.OrderItemDto">
+    select o.id,o.hotel_id hotelId,room_id roomId,room_type roomType,o.numbers,stay_in_time stayInTime,
+    days,order_id orderId,mans,room_price price,r.remark FROM order_item o
+    left join rooms r on o.room_id=r.id and o.hotel_id=r.hotel_id
+    where order_id=#{orderId}
+    ORDER BY stay_in_time
+  </select>
+
+</mapper>
