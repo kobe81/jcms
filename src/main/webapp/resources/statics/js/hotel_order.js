@@ -34,7 +34,7 @@ var hotel_order={
                         '<div class="orderitem"> <ul class="am-list">'+itemhtml+'</ul>'+
                         '</div><div align="right" class="but"><span>共'+rooms+'间房</span>&nbsp;&nbsp;' +
                         '<span>合计：￥ '+total+'</span>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;'+
-                        (o.state==0?'<button type="button" onclick="hotel_order.play('+o.id+')" class="am-btn am-btn-xs am-btn-warning">立即付款</button>&nbsp;&nbsp;':"")+
+                        (o.state==0?'<button type="button"   class="am-btn am-btn-xs am-btn-warning"><a href="/jcms/order/pay?oid='+o.id+'">立即付款</a></button>&nbsp;&nbsp;':"")+
                         '<button type="button" onclick="hotel_order.delOrder('+o.id+')" class="am-btn am-btn-xs">删除订单</button></div></div>';
                 })
                 $("#order").html(orderhtml);
@@ -63,7 +63,13 @@ var hotel_order={
             }
         })
     },
-    play:function(){
+    play:function(oid){
+            /*var data=$.parseJSON(data);
+            if(data&&data.success){*/
+               /* location.reload();*/
+          /*  }else {
+                layer.msg('删除失败', {icon: 5});
+            }*/
         layer.msg('待开发！！！', {icon: 4});
     }
 }

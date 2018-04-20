@@ -3,10 +3,10 @@ package com.jcms.pojo.dto;
 import java.util.Date;
 
 /**
- * @Author: ZYJ
+ * @Author: hongtong
  * @Description: 回复
  * @CreateDate: 2018/4/6 20:06
- * @UpdateUser: ZYJ
+ * @UpdateUser: hongtong
  * @UpdateUser: 2018/4/6 20:06
  * @UpdateRemark: 更新说明
  * @Version: 1.0
