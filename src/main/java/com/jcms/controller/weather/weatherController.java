@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/weather")
 public class weatherController extends BaseController {
 
-  /*  @RequestMapping("/wuyuan")
+    @RequestMapping("/wuyuan")
     public String weather(){
         return "/views/weather";
-    }*/
+    }
 }
