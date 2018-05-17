@@ -62,12 +62,13 @@
         <h1>${info.hotel.hotelName}</h1>
         <p>地址:<label>${info.hotel.address}</label></p>
     </div>
-    <div>
+    <div style="width: 50%">
         <div data-am-widget="slider" class="am-slider am-slider-default pic_show" data-am-slider='{}' >
             <ul class="am-slides">
                 <c:forEach items="${info.pics}" var="pics">
                 <li>
                     <img src="${ctx}${pics}">
+
                 </li>
                 </c:forEach>
             </ul>

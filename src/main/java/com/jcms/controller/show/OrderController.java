@@ -2,6 +2,7 @@ package com.jcms.controller.show;
 
 import com.jcms.controller.common.BaseController;
 import com.jcms.service.OrderService;
+
 import com.jcms.utils.PaymentUtil;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class OrderController extends BaseController {
     private OrderService orderService;
 
     @RequestMapping("/pay")
-    public String pay(String oid, HttpServletRequest request, HttpServletResponse response) {
+    public String pay(String count,HttpServletRequest request, HttpServletResponse response) {
         try {
             //接受参数
             /* String address = request.getParameter("address");
@@ -46,7 +47,8 @@ public class OrderController extends BaseController {
             String p0_Cmd = "Buy";
             String p1_MerId = ResourceBundle.getBundle("merchantInfo", Locale.getDefault()).getString("p1_MerId");//商户编号
             String p2_Order = "25";
-            String p3_Amt = "0.01";//订单的count（order.total）,0.01用来测试
+            System.out.println(count+"43239409999999999999999999999999");
+            String p3_Amt = count;//订单的count（order.total）,0.01用来测试
             String p4_Cur = "CNY";
             String p5_Pid = "";
             String p6_Pcat = "";
@@ -60,8 +62,9 @@ public class OrderController extends BaseController {
             // 加密hmac 需要密钥
             String keyValue = ResourceBundle.getBundle("merchantInfo", Locale.getDefault()).getString("keyValue");
             //生成加密算法
-            String hmac = PaymentUtil.buildHmac(p0_Cmd, p1_MerId, p2_Order, p3_Amt, p4_Cur, p5_Pid, p6_Pcat, p7_Pdesc,
-                    p8_Url, p9_SAF, pa_MP, pd_FrpId, pr_NeedResponse, keyValue);
+            String hmac = PaymentUtil.buildHmac(p0_Cmd, p1_MerId, p2_Order, p3_Amt,
+                    p4_Cur, p5_Pid, p6_Pcat, p7_Pdesc, p8_Url, p9_SAF, pa_MP,
+                    pd_FrpId, pr_NeedResponse, keyValue);
             //发送给第三方
             StringBuffer sb = new StringBuffer("https://www.yeepay.com/app-merchant-proxy/node?");
             sb.append("p0_Cmd=").append(p0_Cmd).append("&");

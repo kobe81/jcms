@@ -8,10 +8,10 @@ import java.util.Arrays;
 public class PaymentUtil {
 
 	private static String encodingCharset = "UTF-8";
-	
+
 	/**
 	 * 生成hmac方法
-	 * 
+	 *
 	 * @param p0_Cmd 业务类型
 	 * @param p1_MerId 商户编号
 	 * @param p2_Order 商户订单号
@@ -29,9 +29,9 @@ public class PaymentUtil {
 	 * @return
 	 */
 	public static String buildHmac(String p0_Cmd,String p1_MerId,
-			String p2_Order, String p3_Amt, String p4_Cur,String p5_Pid, String p6_Pcat,
-			String p7_Pdesc,String p8_Url, String p9_SAF,String pa_MP,String pd_FrpId,
-			String pr_NeedResponse,String keyValue) {
+								   String p2_Order, String p3_Amt, String p4_Cur,String p5_Pid, String p6_Pcat,
+								   String p7_Pdesc,String p8_Url, String p9_SAF,String pa_MP,String pd_FrpId,
+								   String pr_NeedResponse,String keyValue) {
 		StringBuilder sValue = new StringBuilder();
 		// 业务类型
 		sValue.append(p0_Cmd);
@@ -59,13 +59,13 @@ public class PaymentUtil {
 		sValue.append(pd_FrpId);
 		// 应答机制
 		sValue.append(pr_NeedResponse);
-		
+
 		return PaymentUtil.hmacSign(sValue.toString(), keyValue);
 	}
-	
+
 	/**
 	 * 返回校验hmac方法
-	 * 
+	 *
 	 * @param hmac 支付网关发来的加密验证码
 	 * @param p1_MerId 商户编号
 	 * @param r0_Cmd 业务类型
@@ -82,9 +82,9 @@ public class PaymentUtil {
 	 * @return
 	 */
 	public static boolean verifyCallback(String hmac, String p1_MerId,
-			String r0_Cmd, String r1_Code, String r2_TrxId, String r3_Amt,
-			String r4_Cur, String r5_Pid, String r6_Order, String r7_Uid,
-			String r8_MP, String r9_BType, String keyValue) {
+										 String r0_Cmd, String r1_Code, String r2_TrxId, String r3_Amt,
+										 String r4_Cur, String r5_Pid, String r6_Order, String r7_Uid,
+										 String r8_MP, String r9_BType, String keyValue) {
 		StringBuilder sValue = new StringBuilder();
 		// 商户编号
 		sValue.append(p1_MerId);
@@ -111,7 +111,7 @@ public class PaymentUtil {
 		String sNewString = PaymentUtil.hmacSign(sValue.toString(), keyValue);
 		return sNewString.equals(hmac);
 	}
-	
+
 	/**
 	 * @param aValue
 	 * @param aKey
@@ -169,7 +169,7 @@ public class PaymentUtil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param args
 	 * @param key
 	 * @return
@@ -207,8 +207,8 @@ public class PaymentUtil {
 		return toHex(md.digest(value));
 
 	}
-	
-   public static void main(String[] args) {
+
+	public static void main(String[] args) {
 		System.out.println(hmacSign("AnnulCard1000043252120080620160450.0http://localhost/SZXpro/callback.asp杩?4564868265473632445648682654736324511","8UPp0KE8sq73zVP370vko7C39403rtK1YwX40Td6irH216036H27Eb12792t"));
 	}
 }
