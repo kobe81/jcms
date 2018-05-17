@@ -48,7 +48,7 @@ public class OrderController extends BaseController {
             String p1_MerId = ResourceBundle.getBundle("merchantInfo", Locale.getDefault()).getString("p1_MerId");//商户编号
             String p2_Order = "25";
             System.out.println(count+"43239409999999999999999999999999");
-            String p3_Amt = count;//订单的count（order.total）,0.01用来测试
+            String p3_Amt = "0.01";//订单的count（order.total）,0.01用来测试
             String p4_Cur = "CNY";
             String p5_Pid = "";
             String p6_Pcat = "";

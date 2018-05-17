@@ -27,8 +27,6 @@ var hotel_order={
                         total+= t.price*t.numbers;
                         rooms+=t.numbers;
                     })
-
-
                     orderhtml+='<div class="roomInfo"><div class="orderName"><span>'+o.hotelName+'</span>' +
                         '<span style="margin-left: 900px;">'+dateFtt("yyyy-MM-dd hh:mm:ss",o.orderTime)+'</span></div>' +
                         '<div class="orderitem"> <ul class="am-list">'+itemhtml+'</ul>'+
@@ -37,6 +35,7 @@ var hotel_order={
                         (o.state==0?'<button type="button"   class="am-btn am-btn-xs am-btn-warning"><a href="/jcms/order/pay?count='+total+'">立即付款</a></button>&nbsp;&nbsp;':"")+
                         '<button type="button" onclick="hotel_order.delOrder('+o.id+')" class="am-btn am-btn-xs">删除订单</button></div></div>';
                 })
+
                 $("#order").html(orderhtml);
 
             }

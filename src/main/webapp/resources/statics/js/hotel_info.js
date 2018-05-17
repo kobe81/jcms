@@ -58,7 +58,7 @@ var hotel_info={
                     var data=$.parseJSON(data);
                     if(data.success){
                         layer.msg('预订成功！', {icon: 6});
-                        location.reload();
+                        setTimeout("location.reload();",2000);
                     }else{
                         layer.msg('预订失败！', {icon: 5});
                     }
